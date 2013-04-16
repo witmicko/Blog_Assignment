@@ -77,7 +77,6 @@ public class UserTest extends UnitTest
   public void testRemoveBlog() {
     User user1 = User.findByName("ian"); // ian has blog2 and blog3
     assertEquals(2, user1.blogs.size());
-    Blog blog1 = Blog.findByName("blog1");
     Blog blog2 = Blog.findByName("blog2");
     Blog blog3 = Blog.findByName("blog3");
 
@@ -85,7 +84,7 @@ public class UserTest extends UnitTest
     user1.blogs.remove(blog2);
     blog2.delete();
     user1.save();
-    //User user = User.findByName("ian");
+
     assertEquals(1, user1.blogs.size());
     assertFalse(user1.blogs.contains(blog2));
     assertTrue(user1.blogs.contains(blog3));
@@ -93,7 +92,6 @@ public class UserTest extends UnitTest
     blog3.delete();
     user1.save();
     assertEquals(0, user1.blogs.size());
-
   }
 
   @Test

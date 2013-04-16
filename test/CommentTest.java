@@ -1,19 +1,25 @@
 import org.junit.*;
 
+import com.mchange.v2.c3p0.impl.NewPooledConnection;
+
 import java.util.*;
+
 import play.test.*;
 import models.*;
 
 public class CommentTest extends UnitTest 
 {
   private Comment c1,c2,c3;
+  private Post p1;
   @Before
   public void setup()
   {
-    c1 = new Comment("hello1");
-    c2 = new Comment("hello2");
-    c3 = new Comment("hello3");
-    
+    c1 = new Comment("author1", "content1");
+    c2 = new Comment("author2", "content2");
+    c3 = new Comment("author3", "content3");
+    p1 = new Post("title", "content", "author");
+    p1.addComment(c1);
+    p1.save();
     c1.save();
     c2.save();
     c3.save();
@@ -30,10 +36,13 @@ public class CommentTest extends UnitTest
   @Test
   public void testCreate()
   {
-    assertEquals("hello1", c1.name);
-    assertEquals("hello2", c2.name);
-    assertEquals("hello3", c3.name);
-    
-    
+    assertEquals("author1", c1.author);
+    assertEquals("content1", c1.content);
+    assertEquals("author2", c2.author);
+    assertEquals("author3", c3.author);   
+  }
+  @Test
+  public void testPost(){
+    assertEquals(p1, c1.post);
   }
 }
