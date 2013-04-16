@@ -35,7 +35,7 @@ public class UserTest extends UnitTest
     u1.delete();
     u2.delete();
     u3.delete();
-  
+
   }
 
   @Test
@@ -64,18 +64,18 @@ public class UserTest extends UnitTest
 
     Blog blog01 = Blog.findByName("blog1");
     Blog blog02 = Blog.findByName("blog2");
-    Blog blog03 = new Blog("blog3");
-    
+    Blog blog03 = Blog.findByName("blog3");
+
     User userTest = User.findByName("ian");
     assertEquals(2, userTest.blogs.size());
-    assertFalse(userTest.blogs.contains(blog01));   
+    assertFalse(userTest.blogs.contains(blog01));
     assertTrue(userTest.blogs.contains(blog02));
     assertTrue(userTest.blogs.contains(blog03));
   }
 
   @Test
   public void testRemoveBlog() {
-    User user1 = User.findByName("ian"); //ian has blog2 and blog3
+    User user1 = User.findByName("ian"); // ian has blog2 and blog3
     assertEquals(2, user1.blogs.size());
     Blog blog1 = Blog.findByName("blog1");
     Blog blog2 = Blog.findByName("blog2");
@@ -83,22 +83,24 @@ public class UserTest extends UnitTest
 
     assertTrue(user1.blogs.contains(blog2));
     user1.blogs.remove(blog2);
-    user1.save();
-    User user = User.findByName("ian");
-    assertEquals(1, user.blogs.size());
-    assertFalse(user.blogs.contains(blog2));
-    assertTrue(user.blogs.contains(blog3));
-   user1.blogs.remove(blog3);
-
     blog2.delete();
-    //blog3.delete();
+    user1.save();
+    //User user = User.findByName("ian");
+    assertEquals(1, user1.blogs.size());
+    assertFalse(user1.blogs.contains(blog2));
+    assertTrue(user1.blogs.contains(blog3));
+    user1.blogs.remove(blog3);
+    blog3.delete();
+    user1.save();
+    assertEquals(0, user1.blogs.size());
+
   }
+
   @Test
-  public void testBlogUser()
-  {
-    Blog blog  = Blog.findByName("blog1");
-    assertNotNull (blog.user);
-    assertEquals ("john", blog.user.name);
+  public void testBlogUser() {
+    Blog blog = Blog.findByName("blog1");
+    assertNotNull(blog.user);
+    assertEquals("john", blog.user.name);
   }
 
 }
