@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+#{set title: "${user.firstName} ${user.lastName}: Account Settings" /}
+#{include 'nav/open.html' /}
+          <li>                <a href="/home">        Home    </a></li>
+          <li>                <a href="/members">     Members </a></li>
+          <li>                <a href="/homeprofile"> My Profile </a></li>
+          <li>                <a href="/blog">        My Blog    </a></li> 
+          <li class="active"> <a href="/editprofile"> Account Settings </a></li>
+          <li>                <a href="/logout">      Logout  </a></li>
+#{include 'nav/close.html' /}
+
+<div class="formstyle">
+  <form id="signup" action="/editprofile/change" method="POST">
+    <label>Email</label> 
+    <input type="text" name="email"  value=${user.email}>
+    
+    <label>First name</label> 
+    <input type="text" name="firstName" value=${user.firstName}> 
+    
+    <label>Last name</label> 
+    <input type="text" name="lastName"  value=${user.lastName}> 
+    
+    <label>Age</label> 
+    <input type="text" name="age"  value=${user.age}> 
+    
+    <label>Nationality</label> 
+    <input type="text" name="nationality"  value=${user.nationality}>         
+    
+    <label>Password</label>
+    <input type="password" name="password"  value=${user.password}> 
+    <input type="password" name="password2" > 
+
+    <input class="formbutton" type="submit" value="Save" />
+  </form>
+  <p>Enter your desired password twice. It must be at least 5 characters.</p>
+</div>

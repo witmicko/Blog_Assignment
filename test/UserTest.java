@@ -17,9 +17,9 @@ public class UserTest extends UnitTest
     b1 = new Blog("blog1");
     b2 = new Blog("blog2");
     b3 = new Blog("blog3");
-    u1 = new User("john");
-    u2 = new User("ian");
-    u3 = new User("dennis");
+    u1 = new User("john", null, 0, null, null);
+    u2 = new User("ian", null, 0, null, null);
+    u3 = new User("dennis", null, 0, null, null); //TODO
 
     // some blogs
     u1.addBlog(b1);
@@ -42,13 +42,13 @@ public class UserTest extends UnitTest
   public void testCreate() {
     User a = User.findByName("john");
     assertNotNull(a);
-    assertEquals("john", a.name);
+    assertEquals("john", a.firstName);
     User b = User.findByName("ian");
     assertNotNull(b);
-    assertEquals("ian", b.name);
+    assertEquals("ian", b.firstName);
     User c = User.findByName("dennis");
     assertNotNull(c);
-    assertEquals("dennis", c.name);
+    assertEquals("dennis", c.firstName);
   }
 
   @Test
@@ -98,7 +98,7 @@ public class UserTest extends UnitTest
   public void testBlogUser() {
     Blog blog = Blog.findByName("blog1");
     assertNotNull(blog.user);
-    assertEquals("john", blog.user.name);
+    assertEquals("john", blog.user.firstName);
   }
 
 }

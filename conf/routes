@@ -4,9 +4,18 @@
 
 # Import CRUD routes
 *      /admin           					   module:crud
-s
+
+# Accounts
+GET    /                                       Accounts.index
+GET    /signup                                 Accounts.signup
+GET    /login                                  Accounts.login
+GET    /logout                                 Accounts.logout
+GET    /authenticate                           Accounts.authenticate
+POST   /authenticate                           Accounts.authenticate
+POST   /register                               Accounts.register
+
 # Home page
-GET     /                                       Application.index
+GET     /home                                  Home.index                                  
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

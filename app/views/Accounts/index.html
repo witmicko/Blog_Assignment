@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+#{set title:'Vent a bit' /}
+
+<div class="hero-unit">
+  <h1 class="pull-left">Venter</h1>
+  <a class="btn pull-right btn-primary btn-small" href="/signup"> Signup</a>
+  <div class="row">
+    <p>Vent a bit, it`s free</p>
+  </div>
+</div>
+<form class="form-vertical pull-right span3" action="/login" method="POST">
+  <div class="well">
+    <div class="control-group">
+      <span class="label label-info">Login</span>
+      <div class="controls">
+        <input type="text" class="input-medium" placeholder="Email"> 
+        <input type="text" class="input-medium" placeholder="Password"> 
+        <button class="btn btn-primary" type="submit" value="Login">Login</button>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="container span9">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#">Latest post</a> 
+    </li>
+    <li>
+      <a href="#">About</a> 
+    </li>
+  </ul>
+<div class="well well-large">
+  <p>Latest Post / About</p>
+  </div>
+</div>
+

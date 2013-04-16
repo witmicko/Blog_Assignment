@@ -1,0 +1,47 @@
+#{extends 'main.html' /}
+#{set title:"Spacebook Home Profile for ${user.firstName} ${user.lastName}" /}
+
+#{include 'nav/open.html' /}
+          <li>                <a href="/home">        Home    </a></li>
+          <li>                <a href="/members">     Members </a></li>
+          <li class="active"> <a href="/homeprofile"> My Profile </a></li>
+          <li>                <a href="/blog">        My Blog    </a></li>
+          <li>                <a href="/editprofile"> Account Settings </a></li>
+          <li>                <a href="/logout">      Logout  </a></li>
+#{include 'nav/close.html' /}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="hero-unit span4">               
+      <img class="img-rounded" src="@{HomeProfile.getPicture(user.id)}"/>         
+      <form class="file-form"action="@{HomeProfile.uploadPicture(user.id)}" method="post" enctype="multipart/form-data">    
+        <input type="file" title="Picture" name="picture" />
+        <input class="btn btn-small btn-primary " type="submit" name="submit" value="Save"  />
+      </form> 
+    </div>
+    
+    <div class="hero-unit span3 offset1">
+      <img class="img-rounded  " src="@{HomeProfile.getThumbnail(user.id)}"/>
+      <form class="file-form" action="@{HomeProfile.uploadThumbnail(user.id)}" method="post" enctype="multipart/form-data">     
+        <input type="file" title="Thumbnail" name="picture" />
+        <input class="btn btn-small btn-primary" type="submit" name="submit" value="Save"  />   
+      </form>        
+    </div>  
+  </div>
+  <div class="input-append span10" >
+    <hr>
+    <form action="/HomeProfile/changeText" method="post">         
+      <input class="span5" id="appendedInputButton"type="text" name="profiletext" />
+      <button class="btn btn-primary " type="submit" name="submit">Change Status</button> 
+    </form>
+  </div>
+  <div class="well span10 text-well ">
+    <p><strong>Status:      </strong>${user.statusMessage}</p>
+    <p><strong>Email:       </strong>${user.email}</p>
+    <p><strong>Age:         </strong>${user.age}</p>
+    <p><strong>Nationality: </strong>${user.nationality}</p>
+  </div>
+</div>
+
+
+
