@@ -35,7 +35,7 @@ public class Accounts extends Controller
   public static void authenticate(String email, String password) {
     User user = User.findByEmail(email);
     if (user == null || !user.checkPassword(password)) {
-      login();
+      index();
     }
     session.put("logged_in_userid", user.id);
     Home.index();

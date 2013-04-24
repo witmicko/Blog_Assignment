@@ -8,13 +8,13 @@
     <p>Vent a bit, it`s free</p>
   </div>
 </div>
-<form class="form-vertical pull-right span3" action="/login" method="POST">
+<form class="form-vertical pull-right span3" action="/authenticate" method="POST">
   <div class="well">
     <div class="control-group">
       <span class="label label-info">Login</span>
       <div class="controls">
-        <input type="text" class="input-medium" placeholder="Email"> 
-        <input type="text" class="input-medium" placeholder="Password"> 
+        <input type="text" class="input-medium" name="email" id="email" placeholder="Email"> 
+        <input type="password" class="input-medium" name="password"  id="password" placeholder="Password"> 
         <button class="btn btn-primary" type="submit" value="Login">Login</button>
       </div>
     </div>
