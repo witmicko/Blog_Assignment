@@ -17,7 +17,7 @@ public class CommentTest extends UnitTest
     c1 = new Comment("author1", "content1");
     c2 = new Comment("author2", "content2");
     c3 = new Comment("author3", "content3");
-    p1 = new Post("title", "content", "author");
+    p1 = new Post("title", "content");
     p1.addComment(c1);
     p1.save();
     c1.save();

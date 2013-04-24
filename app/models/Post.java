@@ -21,7 +21,7 @@ public class Post extends Model
 //  @ManyToOne
 //  public Blog blog;
   
-  @OneToMany(mappedBy="post",cascade=CascadeType.ALL)
+  @OneToMany(cascade=CascadeType.ALL)
   public List<Comment> comments;
 
   public String        title;
@@ -33,14 +33,12 @@ public class Post extends Model
   private Date         postedAt;
 
   
-  @SuppressWarnings("unused")
-  private String       author;
+ 
 
-  public Post(String title, String content, String author)
+  public Post(String title, String content)
     {
       this.title = title;
       this.content = content;
-      this.author = author;
       this.postedAt = new Date();
       this.comments = new ArrayList<Comment>();
     }

@@ -19,7 +19,7 @@ import play.db.jpa.Model;
 @Entity
 public class User extends Model
 {
-  @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+  @OneToMany(cascade=CascadeType.ALL)
   public List<Blog> blogs; //stores blogs
   public String     firstName;
   public String     lastName;
