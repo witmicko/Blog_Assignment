@@ -18,8 +18,8 @@ import play.db.jpa.Model;
 @Entity
 public class Post extends Model
 {
-  @ManyToOne
-  public Blog blog;
+//  @ManyToOne
+//  public Blog blog;
   
   @OneToMany(mappedBy="post",cascade=CascadeType.ALL)
   public List<Comment> comments;
@@ -46,7 +46,7 @@ public class Post extends Model
     }
 
   public void addComment(Comment comment) {
-    comment.post = this;
+    //comment.post = this;
     comments.add(comment);
   }
 

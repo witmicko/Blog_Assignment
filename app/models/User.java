@@ -48,7 +48,7 @@ public class User extends Model
    * @param blog
    */
   public void addBlog(Blog blog){
-    blog.user=this;
+    //blog.user=this;
     this.blogs.add(blog);
   }
   public List<Blog> getBlogs(Long blogId) {

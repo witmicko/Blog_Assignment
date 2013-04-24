@@ -26,7 +26,7 @@ public class Accounts extends Controller
 
   public static void register(String firstName, String lastName, int age,
       String email, String password, String password2) {
-    Logger.info(firstName + " " + lastName + " " + email + " " + password);
+    Logger.info(firstName + " " + lastName +" " +age+ " " + email + " " + password);
     User user = new User(firstName, lastName, age, email, password);
     user.save();
     authenticate(user.email, user.password);

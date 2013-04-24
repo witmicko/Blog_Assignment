@@ -17,6 +17,10 @@ POST   /register                               Accounts.register
 # Home page
 GET     /home                                  Home.index                                  
 
+# BlogsList
+GET     /blogslist                             BlogsList.index
+GET     /blogslist/follow/{id}                 BlogsList.follow
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

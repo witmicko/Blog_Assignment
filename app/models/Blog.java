@@ -14,8 +14,8 @@ import play.db.jpa.Model;
 public class Blog extends Model
 {
   public String name;
-  @ManyToOne
-  public User user;
+//  @ManyToOne
+//  public User user;
   
   @OneToMany(mappedBy="blog",cascade=CascadeType.ALL)
   public List<Post> posts;
@@ -28,7 +28,7 @@ public class Blog extends Model
   }
   
   public void addPost(Post post){
-    post.blog = this;
+    //post.blog = this;
     this.posts.add(post);
   }
   public String toString()
