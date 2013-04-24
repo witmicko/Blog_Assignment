@@ -1,0 +1,32 @@
+Comment(commentOne):
+    author: commentAuthor
+    content: contentTestLOL
+    
+Comment(commentTwo):
+    author: commentAuthor2
+    content: contentTest222
+    
+Post(postOne):
+    title: postOneTitle
+    content: postContent
+    comments:
+              - commentOne
+              - commentTwo
+
+Blog(blog1):
+    name: blogOneTest
+    posts:
+          - postOne
+          
+Blog(blog2):
+    name: secondBlog
+          
+User(testUser):
+    firstName: userFirstName
+    lastName: userLastName
+    age: 20
+    email: testUser@venter.ie
+    password: pwd
+    blogs:
+          - blog1
+          - blog2

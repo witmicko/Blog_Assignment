@@ -63,7 +63,9 @@ public class User extends Model
   {
     return find("firstName", firstName).first();
   }
-  
+  public int getBlogIndex(Blog blog){
+    return blogs.indexOf(blog)+1;
+  }
   public boolean checkPassword(String password) {
     return this.password.equals(password);
   }

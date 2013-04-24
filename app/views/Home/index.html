@@ -20,9 +20,9 @@
 #{include 'nav/close.html' /}
 
 <div class="row-fluid">
-  <div class="span3">
+  <div class="span4">
     <div class="well text-well">     
-      <h4> Hello: ${user.firstName} ${user.lastName} age:${user.age}</h4>
+      <h4> Hello: ${user.firstName} ${user.lastName} <br>age:${user.age}</h4>
     </div>  
       <div class="container span9">
         <form class="well form-horizontal" action="/register" method="POST">
@@ -30,21 +30,18 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Your Blogs</th>
+                <th>Your Blogs (${user.blogs.size()})</th>
               </tr>
             </thead>
             <tbody>
+            #{list items:user.blogs, as:'blog'}
               <tr>
-                <td>1</td>
-                <td>Michael [no.of posts]</td>
+                <td>${user.getBlogIndex(blog)}</td>
+                <td><a href="@{BlogView.readBlog(blog.id)}">
+                <strong>${blog.getName()}</strong> No. of posts[${blog.posts.size()}]</a></td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>Jake
-                  <span style="font-size: 14px;">&nbsp;</span>
-                  <span style="font-size: 14px;">[no.of posts]</span> 
-                </td>
-              </tr>
+            #{/list}
+   
             </tbody>
           </table>
         </form>
