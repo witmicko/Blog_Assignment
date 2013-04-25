@@ -50,14 +50,15 @@
 <div class="accordion" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
+        <a href="@{BlogView.deletepost(post.id)}" class="btn btn-mini pull-right">Delete</a>
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#${post.id}">
-        <strong>${post.title}</strong>
+        <strong>${post.title}</strong></a>
 		<p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
-      </a>
     </div>
     <div id="${post.id}" class="accordion-body collapse in">
       <div class="accordion-inner"> 
         <p>${post.content}   </p>
+        <p class="pull-right">${post.author}   </p>
       </div>
     </div>
   </div>

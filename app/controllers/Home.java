@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Blog;
+import models.Post;
 import models.User;
 import play.Logger;
 import play.db.jpa.GenericModel;
@@ -21,7 +22,8 @@ public class Home extends Controller
     List<Blog> blogs = user.blogs;
     Blog blog = Blog.findById(id);
     blogs.remove(blog);
-    
+    List<Post>posts = blog.posts;
+    blog.posts.removeAll(posts);
     user.save();
     blog.delete();
     index();

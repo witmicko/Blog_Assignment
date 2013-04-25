@@ -68,16 +68,17 @@ public class BlogView extends Controller
   }
 
   public static void deletePost(Long postid) {
-//    User user = Accounts.getLoggedInUser();
-//    Logger.info("Post ID = " + postid);
-//
-//    Post post = GenericModel.findById(postid);
-//    user.posts.remove(post);
-//
-//    user.save();
-//    post.delete();
-//
-//    index();
+    User user = Accounts.getLoggedInUser();
+    Logger.info("Post ID = " + postid);
+    Blog blog = Blog.findById(currentId);
+
+    Post post = Post.findById(postid);
+    blog.posts.remove(post);
+    blog.save();
+    user.save();
+    post.delete();
+
+    readBlog(currentId);
   }
 
 }
