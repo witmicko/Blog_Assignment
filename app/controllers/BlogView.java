@@ -37,12 +37,15 @@ public class BlogView extends Controller
     render(blog, posts);
   }
   public static void newBlog(String name) {
+    if(name!=null){
     User user = Accounts.getLoggedInUser();
     Blog blog = new Blog(name);
     Logger.info("Name:" + name+ blog.id);
     user.addBlog(blog);
     user.save();
-    index();
+    }
+      
+    Home.index();
   }
   
   public static void newPost(String title, String content, Long id) {

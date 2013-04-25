@@ -2,22 +2,61 @@
 #{set title:"Venter.ie Page of ${user.firstName} ${user.lastName}" /}
 
 #{include 'nav/open.html' /}
-          <li class="active"> <a href="/home"> Home </a></li>
-          <li>                <a href="/blogview/newblog">New Blog</a></li>
-		  <li> 
-		    <div class="btn-group">
-              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li> <a href="#">First Link</a> </li>
-                <li><a href="#">Second Link</a> </li>
-                <li><a href="#">Third Link</a> </li>
-              </ul>
-            </div>
+<li class="active"> <a href="/home"> Home </a></li>
+<li id="newblog">   
+  <a href="#"  
+    rel="popover"    
+    data-toggle="popover" 
+    title="New Blog" data-placement="below" 
+    data-html="true" title="Popover on bottom"
+    >New blog
+  </a>
+  <!--popover content-->
+  <div id="popover_content_wrapper" style="display: none">
+    <form class="form-vertical well" action="/blogview/newblog" method="POST">
+      <fieldset>
+        <legend>Blog Name</legend>
+        <div class="control-group">
+          <div class="controls">
+            <input class="input-block-level" type="text" name="name" id="name" placeholder="New Blog Name"> 
+          </div>
+        </div>
+        <div class="well form-actions well-small">
+          <button class="btn btn-primary" type="submit" value="Save">Save</button>
+          <a href="/home">
+            <button class="btn btn-primary" type="button" >Cancel</button>
+          </a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <script>
+  $(function(){
+  	$('[rel=popover]').popover({ 
+  		html : true, 
+  		content: function() {
+  			return $('#popover_content_wrapper').html();
+  			}
+  	});
+  	});
+  </script>
+<!--END-->
+</li>
+<li> 
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    <li> <a href="#">First Link</a> </li>
+    <li><a href="#">Second Link</a> </li>
+    <li><a href="#">Third Link</a> </li>
+    </ul>
+    </div>
           </li>
           <li > <a class="pull-right" href="/logout"> Logout  </a></li>
 #{include 'nav/close.html' /}
+<!--NAV BAR END-->
 
 <div class="row-fluid">
   <div class="span4">
