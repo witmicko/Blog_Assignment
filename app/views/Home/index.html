@@ -76,8 +76,13 @@
             #{list items:user.blogs, as:'blog'}
               <tr>
                 <td>${user.getBlogIndex(blog)}</td>
-                <td><a href="@{BlogView.readBlog(blog.id)}">
-                <strong>${blog.getName()}</strong> No. of posts[${blog.posts.size()}]</a></td>
+                <td>
+                  <a href="@{BlogView.readBlog(blog.id)}">
+                    <strong>${blog.getName()}</strong> 
+                  </a>
+                  <a href="@{Home.deleteBlog(blog.id)}" class="btn btn-mini pull-right">Delete</a> 
+                  <h6>No. of posts[${blog.posts.size()}] </h6>
+                </td>
               </tr>
             #{/list}
    

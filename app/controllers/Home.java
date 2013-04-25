@@ -15,6 +15,16 @@ public class Home extends Controller
     List<Blog> blogs = user.blogs;
     render(user, blogs);
   }
+  
+  public static void deleteBlog(Long id){
+    User user = Accounts.getLoggedInUser();
+    List<Blog> blogs = user.blogs;
+    Blog blog = Blog.findById(id);
+    blogs.remove(blog);
+    user.save();
+    blog.delete();
+    index();
+  }
 
   
 }
