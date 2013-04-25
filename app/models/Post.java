@@ -29,8 +29,8 @@ public class Post extends Model
   @Lob
   public String        content;
 
-  @SuppressWarnings("unused")
-  private Date         postedAt;
+  
+  public Date         postedAt;
 
   
  
