@@ -12,9 +12,9 @@ public class BlogTest extends UnitTest
   @Before
   public void setup()
   {
-    p1 = new Post("title1", "content1");
-    p2 = new Post("title2", "content2");
-    p3 = new Post("title3", "content3");
+    p1 = new Post("title1", "content1", null);
+    p2 = new Post("title2", "content2", null);
+    p3 = new Post("title3", "content3", null);
     b1 = new Blog("blog1");
     b2 = new Blog("blog2");
     b3 = new Blog("blog3");

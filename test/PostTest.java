@@ -14,9 +14,9 @@ public class PostTest extends UnitTest
     c1 = new Comment("comment1", null);
     c2 = new Comment("comment2", null);
     c3 = new Comment("comment3", null);
-    p1 = new Post("test1", null);
-    p2 = new Post("test2", null);
-    p3 = new Post("test3", null);
+    p1 = new Post("test1", null, null);
+    p2 = new Post("test2", null, null);
+    p3 = new Post("test3", null, null);
     p2.addComment(c1);
     p2.addComment(c2);
     p1.save();

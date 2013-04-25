@@ -21,6 +21,7 @@ public class Home extends Controller
     List<Blog> blogs = user.blogs;
     Blog blog = Blog.findById(id);
     blogs.remove(blog);
+    
     user.save();
     blog.delete();
     index();

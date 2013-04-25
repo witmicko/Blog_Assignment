@@ -17,9 +17,12 @@ POST   /register                               Accounts.register
 # Home page
 GET     /home                                  Home.index                                  
 get     /home/deleteblog/{id}				   Home.deleteBlog
+
+
 # BlogsView
 Get     /blogview/readblog/{id}                BlogView.readBlog
-GET     /blogview/newblog                     BlogView.newBlog
+GET     /blogview/newblog                      BlogView.newBlog
+POST    /blogview/newpost/{id}                 BlogView.newPost
 GET     /blogslist                             BlogsView.index
 GET     /blogslist/follow/{id}                 BlogsView.follow
 

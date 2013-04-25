@@ -12,6 +12,7 @@ import play.mvc.Controller;
 
 public class BlogView extends Controller
 {
+  static Long currentId;
   public static void index() {
 //    User user = Accounts.getLoggedInUser();
 //    List<Post> posts = user.blogs.; // get user`s posts only
@@ -31,11 +32,13 @@ public class BlogView extends Controller
 
 //this works
   public static void readBlog(Long id){
+    currentId=id;
     Blog blog = Blog.findById(id);
     List<Post> posts = blog.posts; // get user`s posts only
     Collections.reverse(posts);
     render(blog, posts);
   }
+  //this works
   public static void newBlog(String name) {
     if(name!=null){
     User user = Accounts.getLoggedInUser();
@@ -44,20 +47,24 @@ public class BlogView extends Controller
     user.addBlog(blog);
     user.save();
     }
-      
     Home.index();
   }
   
-  public static void newPost(String title, String content, Long id) {
+  
+  
+  public static void newPost(String title, String content) {
     User user = Accounts.getLoggedInUser();
-   // String author = user.firstName;
-    Post post = new Post(title, content);
+    String author = user.firstName;
+    Post post = new Post(title, content, author);
     Logger.info("title:" + title + " content:" + content + post.id + " "
         + user.id);
-    Blog blog = GenericModel.findById(id);
+    
+    Blog blog = Blog.findById(currentId);
     blog.addPost(post);
+    blog.save();
     user.save();
-    index();
+    
+    readBlog(currentId);
   }
 
   public static void deletePost(Long postid) {
