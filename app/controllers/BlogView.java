@@ -36,6 +36,15 @@ public class BlogView extends Controller
     Collections.reverse(posts);
     render(blog, posts);
   }
+  public static void newBlog(String name) {
+    User user = Accounts.getLoggedInUser();
+    Blog blog = new Blog(name);
+    Logger.info("Name:" + name+ blog.id);
+    user.addBlog(blog);
+    user.save();
+    index();
+  }
+  
   public static void newPost(String title, String content, Long id) {
     User user = Accounts.getLoggedInUser();
    // String author = user.firstName;

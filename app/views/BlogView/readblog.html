@@ -23,16 +23,21 @@
   <div class="row-fluid">
     <h2> <strong>${blog.getName()}</strong> </h2>
   </div>
-  <div class="span6">
-  <table class="table table-bordered ">
         #{list items:posts, as:'post'}
-		<tr>
-		    <strong>${post.title}</strong> 
-		    <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
-		</tr>
-		<tr>
-		  <p>${post.content}   </p>
-		</tr>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#${post.id}">
+        <strong>${post.title}</strong>
+		<p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
+      </a>
+    </div>
+    <div id="${post.id}" class="accordion-body collapse in">
+      <div class="accordion-inner"> 
+        <p>${post.content}   </p>
+      </div>
+    </div>
+  </div>
         #{/list}
       </table> 
  </div>

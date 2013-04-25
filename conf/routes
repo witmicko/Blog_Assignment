@@ -19,6 +19,7 @@ GET     /home                                  Home.index
 
 # BlogsView
 Get     /blogview/readblog/{id}                BlogView.readBlog
+GET     /blogview/newblog                     BlogView.newBlog
 GET     /blogslist                             BlogsView.index
 GET     /blogslist/follow/{id}                 BlogsView.follow
 
