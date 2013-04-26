@@ -1,3 +1,4 @@
+#{set theme: "${user.theme}"/}
 #{extends 'main.html' /}
 #{set title:'Your blogs' /}
 
@@ -22,101 +23,83 @@
 <li > <a class="pull-right" href="/logout"> Logout  </a></li>
 
 #{include 'nav/close.html' /}
-
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <h3 id="myModalLabel">New Post</h3>
   </div>
   <div class="modal-body ">
-    <form action="@{BlogView.newPost()}" method="post">    
+    <form action="@{BlogView.newPost(title2, content,blog.id)}" method="post">
+    <fieldset>   
       <label> Title </label> 
-        <textarea name="title" class="field span6"  rows="1" ></textarea>   
+        <textarea name="title2" id="title2" class="field span6"  rows="1" ></textarea>   
       <label> Content </label>          
-        <textarea name="content" class="field span6"  rows="8" ></textarea> 
-        <p> 
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary"type="submit" name="submit" value="New Post">Save changes</button>
-    </p>
+        <textarea name="content" id="content" class="field span6"  rows="8" ></textarea> 
+      <p> 
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary"type="submit" name="submit" value="New Post">Save changes</button>
+      </p>
+    </fieldset> 
     </form> 
   </div>
 </div>
+
 
 <div class="container-fluid">
   <div class="row-fluid">
     <h2> <strong>${blog.getName()}</strong> </h2>
   </div>
-  
+<!--   carousel -->
   <div id="myCarousel" class="carousel slide">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+  
   <!-- Carousel items -->
   <div class="carousel-inner well span8 offset1">
     <div class="active item">
-      <a href="@{BlogView.deletepost(post.id)}" class="btn btn-mini pull-right">Delete</a>
+      <a href="@{BlogView.deletepost(post.id, blog.id)}" class="btn btn-mini pull-right">Delete</a>
       <strong>${post.title}</strong></a>
       <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
       <p>${post.content}   </p>
       <p class="pull-right">${post.author}</p>
-      //start work on comments
-              #{list items:comments, as:'comment'}
-<div class="accordion" id="accordion2">
-  <div class="accordion-group">
-    <div class="accordion-heading">
-        <a href="@{BlogView.deletepost(post.id)}" class="btn btn-mini pull-right">Delete</a>
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#${post.id}">
-        <strong>${post.title}</strong></a>
-    <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
-    </div>
-    <div id="${post.id}" class="accordion-body collapse in">
-      <div class="accordion-inner"> 
-        <p>${post.content}   </p>
-        <p class="pull-right">${post.author}   </p>
-      </div>
-    </div>
-  </div>
-        #{/list}
- </div>
       
-</div>
+<!--       accordion comments -->
+      #{list items:post.comments, as:'comment'}
+      <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a href="@{BlogView.deletecomment(blog.id,post.id, comment.id)}" class="btn btn-mini pull-right">Delete Comment</a>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion${comment.id}" href="#${comment.id}">
+            <strong>${comment.author}</strong></a>
+            <p>Posted: ${comment.postedAt.format('dd MMM yy')} at: ${comment.postedAt.format('hh:mm')}</p>
+          </div>
+          <div id="${comment.id}" class="accordion-body collapse in">
+            <div class="accordion-inner"> 
+              <p>${comment.content}   </p>
+              <p class="pull-right">${comment.author}   </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      #{/list}
+      
+      <form class="form-vertical well" action="@{BlogView.newcomment(content, post.id, blog.id)}" method="POST">
+      <fieldset>
+            <legend>New Comment</legend>
+        <div class="control-group">
+          <div class="controls">
+            <input class="input-block-level" type="text" name="content" id="content" placeholder="New comment"> 
+          </div>
+        </div>
+        <div class="well form-actions well-small">
+          <button class="btn btn-primary" type="submit" value="Save">Save</button>
+        </div>
+      </fieldset>
+    </form>
+      
+ </div>
   </div>
   <!-- Carousel nav -->
   <a class="carousel-control left" href="@{BlogView.readBlog(blog.id, (-1))}" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="@{BlogView.readBlog(blog.id,1)}" data-slide="next">&rsaquo;</a>
 </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
- 
- 
- 
- 
- 
  </div>
  

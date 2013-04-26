@@ -14,8 +14,20 @@ public class Home extends Controller
   public static void index() {
     User user = Accounts.getLoggedInUser();
     List<Blog> blogs = user.blogs;
+    Logger.info("User theme: "+user.theme);
+
     render(user, blogs);
   }
+  
+  public static void setTheme(String theme){
+    User user = Accounts.getLoggedInUser();
+    Logger.info("1theme: "+theme);
+    user.theme = theme;
+    Logger.info("User theme: "+user.theme);
+    user.save();
+    index();
+    }
+  
   
   public static void deleteBlog(Long id){
     User user = Accounts.getLoggedInUser();

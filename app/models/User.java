@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -28,6 +29,7 @@ public class User extends Model
   public String     password;
   public Blob       profilePicture;
   public Blob       thumbnailPicture;
+  public String      theme;
 
   /**
    * Constructor for object of class User
@@ -41,7 +43,10 @@ public class User extends Model
     this.email = email;
     this.password = password;
     this.blogs = new ArrayList<Blog>();
+    this.theme = "@{'/public/bootstrap/themes/google/google-bootstrap.css'}";
   }
+  public void setTheme(String theme){
+    this.theme = theme;}
   
   /**
    * Method addBlog() add blog to the list of blogs

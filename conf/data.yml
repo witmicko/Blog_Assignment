@@ -1,10 +1,12 @@
 Comment(commentOne):
     author: commentAuthor
     content: contentTestLOL
+    postedAt: 2013-02-05
     
 Comment(commentTwo):
     author: commentAuthor2
     content: contentTest222
+    postedAt: 2013-02-05
     
 Post(postOne):
     title: BluthIpsum
