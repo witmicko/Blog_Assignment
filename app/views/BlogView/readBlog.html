@@ -46,14 +46,30 @@
   <div class="row-fluid">
     <h2> <strong>${blog.getName()}</strong> </h2>
   </div>
-        #{list items:posts, as:'post'}
+  
+  <div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner well span8 offset1">
+    <div class="active item">
+      <a href="@{BlogView.deletepost(post.id)}" class="btn btn-mini pull-right">Delete</a>
+      <strong>${post.title}</strong></a>
+      <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
+      <p>${post.content}   </p>
+      <p class="pull-right">${post.author}</p>
+      //start work on comments
+              #{list items:comments, as:'comment'}
 <div class="accordion" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
         <a href="@{BlogView.deletepost(post.id)}" class="btn btn-mini pull-right">Delete</a>
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#${post.id}">
         <strong>${post.title}</strong></a>
-		<p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
+    <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
     </div>
     <div id="${post.id}" class="accordion-body collapse in">
       <div class="accordion-inner"> 
@@ -63,7 +79,44 @@
     </div>
   </div>
         #{/list}
-      </table> 
  </div>
+      
+</div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="@{BlogView.readBlog(blog.id, (-1))}" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="@{BlogView.readBlog(blog.id,1)}" data-slide="next">&rsaquo;</a>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+ 
+ 
+ 
+ 
+ 
  </div>
  

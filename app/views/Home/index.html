@@ -77,7 +77,7 @@
               <tr>
                 <td>${user.getBlogIndex(blog)}</td>
                 <td>
-                  <a href="@{BlogView.readBlog(blog.id)}">
+                  <a href="@{BlogView.readBlog(blog.id,0)}">
                     <strong>${blog.getName()}</strong> 
                   </a>
                   <a href="@{Home.deleteBlog(blog.id)}" class="btn btn-mini pull-right">Delete</a> 
