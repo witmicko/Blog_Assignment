@@ -6,13 +6,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <form class="navbar-search pull-left" >
-          <input type="text" class="search-query" placeholder="find blog">
+        <form class="navbar-search pull-left" action=@{BlogView.findBlog(name)} >
+          <input type="text" class="search-query" id="name" name="name" placeholder="find blog">
         </form>
       </li>
       <li>
-        <form class="navbar-search pull-left" >
-          <input type="text" class="search-query" placeholder="find user">
+        <form class="navbar-search pull-left" action=@{UsersBrowser.index(name)}>
+          <input type="text" class="search-query" id="name" name="name" placeholder="find user">
         </form>
       </li>
       <li>

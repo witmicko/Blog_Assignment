@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,43 +15,58 @@ import play.mvc.Controller;
 public class BlogView extends Controller
 {
 
-  public static void index() {
-    // User user = Accounts.getLoggedInUser();
-    // List<Post> posts = user.blogs.; // get user`s posts only
-    // Collections.reverse(posts);
-    // render(user, posts);
+  public static void index(String name) {
+    User user = Accounts.getLoggedInUser();
+    List<User> users = new ArrayList<User>();
+    User usr = null;
+    if (name.equalsIgnoreCase("all")) {
+      users = User.findAll();
+    } else {
+      usr = User.findByName(name);
+      users.add(usr);
+    }
+    render(user, users);
   }
 
-  public static void membersBlog(Long id) {
-    // User user = GenericModel.findById(id);
-    // Logger.info("Just visiting the page for " + user.firstName + ' '
-    // + user.lastName);
-    Blog blog = GenericModel.findById(id);
-    List<Post> posts = blog.posts; // get user`s posts only
-    Collections.reverse(posts);
-    render(blog, posts);
+  public static void findBlog(String name) {
+    User user = Accounts.getLoggedInUser();
+    List<Blog> blogs = Blog.all().fetch();
+    if (name.equalsIgnoreCase("all")) {
+      Logger.info("all blogs");
+      
+    }else {
+      List<Blog> searchResults = new ArrayList<Blog>();
+      Logger.info("else loop Name: " + name);
+      String str = name.toLowerCase();
+      Logger.info("str: "+str );
+      for(Blog b:blogs){
+        String bName = b.name;
+        bName = bName.toLowerCase();
+        if(bName.contains(str)){
+          Logger.info("blog name: "+b.name);
+          searchResults.add(b);
+        }
+      }
+      blogs = searchResults;
+    }
+    render(user, blogs);
   }
 
   // this works
   public static void readBlog(Long id, int iterate) {
     User user = Accounts.getLoggedInUser();
     int index;
-    Logger.info("1session index:" + session.get("index"));
-    if(session.get("index") == null){
-    index = 0;
-    session.put("index", index);
-    Logger.info("2session index:" + session.get("index"));
+    if (session.get("index") == null) {
+      index = 0;
+      session.put("index", index);
     }
     index = Integer.parseInt(session.get("index"));
     index += iterate;
-    Logger.info( "3index:" + index);
 
-    
     Blog blog = Blog.findById(id);
     List<Post> posts = blog.posts; // get user`s posts only
     Collections.reverse(posts);
     Post post = null;
-    Logger.info("4size:" + posts.size() + " index: " + index);
     if (posts.size() != 0) {
       if (index < 0) {
         index = posts.size() - 1;
@@ -61,17 +77,14 @@ public class BlogView extends Controller
       } else {
         post = posts.get(index);
       }
-      Logger.info(" 5index: " + index);
-      Logger.info("6first if");
 
     } else {
       user = Accounts.getLoggedInUser();
-      String author = user.firstName +" "+ user.lastName;
+      String author = user.firstName + " " + user.lastName;
       post = new Post("Example Post", "Example Content", author);
       blog.addPost(post);
       blog.save();
       user.save();
-//      render(blog, demoPost);
     }
     session.put("index", index);
     render(blog, post, user);
@@ -116,7 +129,7 @@ public class BlogView extends Controller
     post.delete();
     readBlog(blogId, 0);
   }
-  
+
   public static void deleteComment(Long blogId, Long postid, Long commentId) {
     User user = Accounts.getLoggedInUser();
     Logger.info("Post ID = " + postid);
@@ -130,23 +143,20 @@ public class BlogView extends Controller
     comment.delete();
     readBlog(blogId, 0);
   }
-  
+
   public static void newComment(String content, Long postId, Long blogId) {
     Post post = Post.findById(postId);
     Blog blog = Blog.findById(blogId);
     User user = Accounts.getLoggedInUser();
     String author = user.firstName;
     Comment comment = new Comment(author, content);
-    Logger.info("author:" + author+ " content: " + content  );
+    Logger.info("author:" + author + " content: " + content);
     post.comments.add(comment);
     post.save();
     blog.save();
     user.save();
 
-    //Blog blog = Blog.findById(id);
-    //blog.addPost(post);
-
     readBlog(blogId, 0);
   }
-  
+
 }

@@ -4,8 +4,8 @@
 
 #{include 'nav/open.html' /}
 <li>                <a href="/home" > Home  </a></li>
-<li class="active"> <a href=@{UsersBrowser.index("all")}> Users </a> </li>
-<li > <a href=""      > Blogs </a></li>
+<li>  <a href=@{UsersBrowser.index("all")}> Users </a> </li>
+<li class="active"> <a href=""      > Blogs </a></li>
 <li> 
   <div class="btn-group">
     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
@@ -25,13 +25,7 @@
 
 #{include 'nav/close.html' /}
 
-#{list items:users, as:'user'}
+#{list items:blogs, as:'blog'}
 
-#{if user != null }
-    Connected user is ${user}
-<p>${user.firstName}</p>
-#{/if}
-#{else}
-    user not found
-#{/else}
+${blog.name}
 #{/list}
