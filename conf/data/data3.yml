@@ -1,0 +1,42 @@
+Comment(3comment1):
+    author: George Bluth
+    content: Who? i just dont want him to point out my cracker ass in front of ann.
+    postedAt: 2013-02-05
+    
+Comment(3comment2):
+    author: Michael Bluth
+    content: I don't deserve to stay. You can always tell a Milford man.
+    postedAt: 2013-02-05
+    
+Post(3post1):
+    title: I mean, COME ON.
+    content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
+    postedAt: 2013-02-05
+    comments:
+              - 3comment1
+              - 3comment2
+
+Post(3post2):
+    title: Come on! I don't appreciate the dry British humor.
+    content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
+    postedAt: 2015-05-19
+    comments: 
+
+Blog(3blog1):
+    name: Could it be love?
+    posts:
+          - 3post1
+          - 3post2
+          
+Blog(3blog2):
+    name: No one was making fun of Andy Griffith.
+          
+User(LucilleBluth):
+    firstName: Lucille
+    lastName: Bluth
+    age: 58
+    email: LucilleBluth@venter.ie
+    password: pwd
+    blogs:
+          - 3blog1
+          - 3blog2
