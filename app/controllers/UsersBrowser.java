@@ -17,21 +17,27 @@ public class UsersBrowser  extends Controller
   //public static void index(List<User> usrs) {
   public static void index(String name) {
     User user = Accounts.getLoggedInUser();
-    List<User>users = new ArrayList<User>();
-    User usr = null;
-    if (name.equalsIgnoreCase("all")){
-      users = User.findAll();
+    List<User> users = User.all().fetch();
+    if (name.equalsIgnoreCase("all")) {
+      Logger.info("all users");
+      
+    }else {
+      List<User> searchResults = new ArrayList<User>();
+      Logger.info("else loop Name: " + name);
+      String str = name.toLowerCase();
+      Logger.info("str: "+str );
+      for(User u:users){
+        String uName = u.firstName+u.lastName;
+        uName = uName.toLowerCase();
+        if(uName.contains(str)){
+          Logger.info("user name: "+uName);
+          searchResults.add(u);
+        }
+      }
+      users = searchResults;
     }
-    else{
-      usr = User.findByName(name);
-      //try{
-          users.add(usr);}
-      //catch(NullPointerException e){
-      //}
-      //}
-    render(user,users);
+    render(user, users);
   }
-  
   public static void findUser(String name){
     String str = name;
     User user = User.findByName(str);
