@@ -1,0 +1,36 @@
+#{set theme: "${user.theme}"/}
+#{extends 'main.html' /}
+#{set title:'Your blogs' /}
+
+#{include 'nav/open.html' /}
+<li>                <a href="/home" > Home  </a></li>
+<li class="active"> <a href=""      > Blogs </a></li>
+<li> 
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li> 
+        <!-- Button to trigger modal -->
+        <a href="#myModal" role="button" class="btn" data-toggle="modal">Add new post</a>
+      </li>
+      <li><a href="#">Second Link</a> </li>
+      <li><a href="#">Third Link</a> </li>
+    </ul>
+  </div>
+</li>
+<li > <a class="pull-right" href="/logout"> Logout  </a></li>
+
+#{include 'nav/close.html' /}
+
+#{list items:users, as:'user'}
+
+#{if user != null }
+    Connected user is ${user}
+<p>${user.firstName}</p>
+#{/if}
+#{else}
+    user not found
+#{/else}
+#{/list}

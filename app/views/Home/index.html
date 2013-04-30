@@ -4,6 +4,8 @@
 
 #{include 'nav/open.html' /}
 <li class="active"> <a href="/home"> Home </a></li>
+<li> <a href=@{UsersBrowser.index("all")}> Users </a> </li>
+<li> <a href=@{UsersBrowser.index("qwe")}> single </a> </li>
 <li id="newblog">   
   <a href="#" 
     rel="popover"    
@@ -43,18 +45,6 @@
   </script>
 <!--END-->
 </li>
-<li> 
-  <div class="btn-group">
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
-      <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu">
-    <li> <a href="#">First Link</a> </li>
-    <li><a href="#">Second Link</a> </li>
-    <li><a href="#">Third Link</a> </li>
-    </ul>
-    </div>
-</li>         
 #{include 'nav/close.html' /}
 <!--NAV BAR END-->
 

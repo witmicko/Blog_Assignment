@@ -40,6 +40,5 @@ public class Home extends Controller
     blog.delete();
     index();
   }
-
-  
+  //public 
 }
