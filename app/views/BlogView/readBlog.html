@@ -49,11 +49,12 @@
   <div class="row-fluid">
     <h2> <strong>${blog.getName()}</strong> </h2>
   </div>
+  
 <!--   carousel -->
   <div id="myCarousel" class="carousel slide">
   
   <!-- Carousel items -->
-  <div class="carousel-inner well span8 offset1">
+  <div class="carousel-inner">
     <div class="active item">
       <a href="@{BlogView.deletepost(post.id, blog.id)}" class="btn btn-mini pull-right">Delete</a>
       <strong>${post.title}</strong></a>
@@ -63,6 +64,7 @@
       
 <!--       accordion comments -->
       #{list items:post.comments, as:'comment'}
+      <div class="container-fluid">
       <div class="accordion" id="accordion2">
         <div class="accordion-group">
           <div class="accordion-heading">
@@ -79,6 +81,7 @@
           </div>
         </div>
       </div>
+      </div>
       #{/list}
       
       <form class="form-vertical well" action="@{BlogView.newcomment(content, post.id, blog.id)}" method="POST">
@@ -86,7 +89,7 @@
             <legend>New Comment</legend>
         <div class="control-group">
           <div class="controls">
-            <input class="input-block-level" type="text" name="content" id="content" placeholder="New comment"> 
+          <textarea class="row-fluid" rows="3"name="content" id="content" >comment...</textarea>
           </div>
         </div>
         <div class="well form-actions well-small">
@@ -98,8 +101,8 @@
  </div>
   </div>
   <!-- Carousel nav -->
+</div>
   <a class="carousel-control left" href="@{BlogView.readBlog(blog.id, (-1))}" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="@{BlogView.readBlog(blog.id,1)}" data-slide="next">&rsaquo;</a>
-</div>
  </div>
  

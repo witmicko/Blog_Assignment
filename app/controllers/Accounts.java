@@ -11,9 +11,9 @@ public class Accounts extends Controller
     render();
   }
 
-  public static void login() {
-    render();
-  }
+//  public static void login() {
+//    render();
+//  }
 
   public static void logout() {
     session.clear();
@@ -47,7 +47,7 @@ public class Accounts extends Controller
       String userId = session.get("logged_in_userid");
       user = User.findById(Long.parseLong(userId));
     } else {
-      login();
+      index();
     }
     return user;
   }
