@@ -64,6 +64,7 @@ public class BlogView extends Controller
     index += iterate;
 
     Blog blog = Blog.findById(id);
+    User author = blog.author;
     List<Post> posts = blog.posts; // get user`s posts only
     Collections.reverse(posts);
     Post post = null;
@@ -79,15 +80,19 @@ public class BlogView extends Controller
       }
 
     } else {
-      user = Accounts.getLoggedInUser();
-      String author = user.firstName + " " + user.lastName;
-      post = new Post("Example Post", "Example Content", author);
+      Logger.info("log1");
+      //user = Accounts.getLoggedInUser();
+      String postAuthor = author.firstName;// + " " + author.lastName;
+      Logger.info("log2 "+postAuthor);
+      post = new Post("Example Post", "Example Content", postAuthor);
+      Logger.info("log3 "+post.title);
+      post.save();
       blog.addPost(post);
       blog.save();
       user.save();
     }
     session.put("index", index);
-    render(blog, post, user);
+    render(blog, post, user,author);
   }
 
   // this works
@@ -95,13 +100,9 @@ public class BlogView extends Controller
     if (name != null) {
       User user = Accounts.getLoggedInUser();
       Blog blog = new Blog(name);
-      Logger.info("Name:" + name + blog.id);
       user.addBlog(blog);
-      Logger.info("Name2:" + name + blog.id);
       user.save();
-      Logger.info("Name3:" + name + blog.id);
     }
-    Logger.info("Name4:" + name );
     Home.index();
   }
 
@@ -114,7 +115,6 @@ public class BlogView extends Controller
 
     Blog blog = Blog.findById(id);
     blog.addPost(post);
-    blog.save();
     user.save();
 
     readBlog(id, 0);
@@ -150,14 +150,20 @@ public class BlogView extends Controller
   public static void newComment(String content, Long postId, Long blogId) {
     Post post = Post.findById(postId);
     Blog blog = Blog.findById(blogId);
-    User user = Accounts.getLoggedInUser();
-    String author = user.firstName;
-    Comment comment = new Comment(author, content);
-    Logger.info("author:" + author + " content: " + content);
-    post.comments.add(comment);
-    post.save();
+    User user = blog.author;
+    User author = Accounts.getLoggedInUser();
+    //String author = user.firstName;
+    Comment comment = new Comment(content);
+    post.addComment(comment);
     blog.save();
     user.save();
+    author.addMyComment(comment);
+    author.save();
+    Logger.info("author:" + author + " content: " + content);
+//    post.comments.add(comment);
+//    post.save();
+//    blog.save();
+//    user.save();
 
     readBlog(blogId, 0);
   }

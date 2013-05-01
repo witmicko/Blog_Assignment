@@ -27,6 +27,7 @@
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
+  #{if user == blog.author}
     <h3 id="myModalLabel">New Post</h3>
   </div>
   <div class="modal-body ">
@@ -41,10 +42,18 @@
         <button class="btn btn-primary"type="submit" name="submit" value="New Post">Save changes</button>
       </p>
     </fieldset> 
-    </form> 
+    </form>
+   #{/if}
+   #{else}
+   <div class="modal-body ">
+     <div class="alert alert-block">
+       <h2>Warning!</h2>
+       <h4>This is not your blog.</h4>
+     </div>
+   #{/else} 
   </div>
 </div>
-
+</div>
 
 <div class="container-fluid">
   <div class="row-fluid">
@@ -57,7 +66,9 @@
   <!-- Carousel items -->
   <div class="carousel-inner">
     <div class="active item">
+    #{if user == blog.author}
       <a href="@{BlogView.deletepost(post.id, blog.id)}" class="btn btn-mini pull-right">Delete</a>
+    #{/if}
       <strong>${post.title}</strong></a>
       <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
       <p>${post.content}   </p>
@@ -69,7 +80,9 @@
       <div class="accordion" id="accordion2">
         <div class="accordion-group">
           <div class="accordion-heading">
+          #{if user == comment.author}
             <a href="@{BlogView.deletecomment(blog.id,post.id, comment.id)}" class="btn btn-mini pull-right">Delete Comment</a>
+          #{/if}  
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion${comment.id}" href="#${comment.id}">
             <strong>${comment.author}</strong></a>
             <p>Posted: ${comment.postedAt.format('dd MMM yy')} at: ${comment.postedAt.format('hh:mm')}</p>

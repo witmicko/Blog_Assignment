@@ -18,7 +18,7 @@ public class Blog extends Model
   @ManyToOne
   public User author;
   
-  @OneToMany(cascade=CascadeType.ALL)
+  @OneToMany(mappedBy="blog", cascade=CascadeType.ALL)
   public List<Post> posts;
   
  // public User author;
@@ -32,8 +32,10 @@ public class Blog extends Model
   }
   
   public void addPost(Post post){
-    //post.blog = this;
-    this.posts.add(post);
+    post.blog = this;
+    post.save();
+    posts.add(post);
+    
   }
   public String toString()
   {

@@ -1,0 +1,55 @@
+Blog(1blog1):
+    name: blogOneTest
+    author: 1testUser
+          
+Blog(1blog2):
+    name: secondBlog
+    author: 1testUser
+    
+Blog(2blog1):
+    name: blogOneTest
+    author: GeorgeBluth
+          
+Blog(2blog2):
+    name: It's OUR nausea.
+    author: GeorgeBluth
+    
+Blog(3blog1):
+    name: Could it be love?
+    author: LucilleBluth
+          
+Blog(3blog2):
+    name: No one was making fun of Andy Griffith.
+    author: LucilleBluth
+    
+Blog(4blog1):
+    name: blogOneTest
+    author: LindsayBluthFunke
+          
+Blog(4blog2):
+    name: secondBlog
+    author: LindsayBluthFunke
+    
+Blog(5blog1):
+    name: blogOneTest
+    author: TobiasFunke
+          
+Blog(5blog2):
+    name: secondBlog
+    author: TobiasFunke
+    
+Blog(6blog1):
+    name: blogOneTest
+    author: MichaelBluth
+          
+Blog(6blog2):
+    name: secondBlog
+    author: MichaelBluth
+    
+Blog(7blog1):
+    name: blogOneTest
+    author: BusterBluth
+          
+Blog(7blog2):
+    name: secondBlog
+    author: BusterBluth

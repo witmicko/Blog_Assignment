@@ -14,9 +14,9 @@ public class CommentTest extends UnitTest
   @Before
   public void setup()
   {
-    c1 = new Comment("author1", "content1");
-    c2 = new Comment("author2", "content2");
-    c3 = new Comment("author3", "content3");
+    c1 = new Comment("author1");
+    c2 = new Comment("author2");
+    c3 = new Comment("author3");
     p1 = new Post("title", "content", null);
     p1.addComment(c1);
     p1.save();

@@ -1,0 +1,48 @@
+User(1testUser):
+    firstName: userFirstName
+    lastName: userLastName
+    age: 20
+    email: testUser@venter.ie
+    password: pwd
+    
+User(GeorgeBluth):
+    firstName: George
+    lastName: Bluth
+    age: 60
+    email: GeorgeBluth@venter.ie
+    password: pwd
+    
+User(LucilleBluth):
+    firstName: Lucille
+    lastName: Bluth
+    age: 58
+    email: LucilleBluth@venter.ie
+    password: pwd
+
+User(LindsayBluthFunke):
+    firstName: Lindsay
+    lastName: Bluth Funke
+    age: 41
+    email: LindsayBluthFunke@venter.ie
+    password: pwd
+    
+User(TobiasFunke):
+    firstName: Tobias
+    lastName: Funke
+    age: 43
+    email: TobiasFunke@venter.ie
+    password: pwd
+
+User(MichaelBluth):
+    firstName: Michael
+    lastName: Bluth
+    age: 60
+    email: MichaelBluth@venter.ie
+    password: pwd
+
+User(BusterBluth):
+    firstName: Buster
+    lastName: Bluth
+    age: 35
+    email: BusterBluth@venter.ie
+    password: pwd

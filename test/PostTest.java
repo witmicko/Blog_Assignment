@@ -11,9 +11,9 @@ public class PostTest extends UnitTest
   @Before
   public void setup()
   {
-    c1 = new Comment("comment1", null);
-    c2 = new Comment("comment2", null);
-    c3 = new Comment("comment3", null);
+    c1 = new Comment("comment1");
+    c2 = new Comment("comment2");
+    c3 = new Comment("comment3");
     p1 = new Post("test1", null, null);
     p2 = new Post("test2", null, null);
     p3 = new Post("test3", null, null);

@@ -26,6 +26,12 @@ public class User extends Model
   @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
   public List<Blog> blogs; //stores blogs
   
+  @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
+  public List<Comment>comments;
+  
+//  @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
+//  public List<Post>posts;
+  
   public String     firstName;
   public String     lastName;
   public int        age;
@@ -47,6 +53,8 @@ public class User extends Model
     this.email = email;
     this.password = password;
     this.blogs = new ArrayList<Blog>();
+    //this.posts = new ArrayList<Post>();
+    this.comments = new ArrayList<Comment>();
     this.theme = "@{'/public/bootstrap/themes/google/google-bootstrap.css'}";
   }
   public void setTheme(String theme){
@@ -63,6 +71,11 @@ public class User extends Model
   }
   public List<Blog> getBlogs(Long blogId) {
     return blogs;
+  }
+  
+  public void addMyComment(Comment comment){
+    comment.author=this;
+    comment.save();
   }
 
   public static User findByEmail(String email) {

@@ -12,18 +12,20 @@ import play.db.jpa.Model;
 public class Comment extends Model
 {
 
-  public String author;
   public Date   postedAt;
 
   @Lob
   public String content;
 
-//  @ManyToOne
+  @ManyToOne
+  public User author;
 //  public Post   post;
 
-  public Comment( String author,String content)
+  @ManyToOne
+  public Post post;
+
+  public Comment(String content)
     {
-      this.author = author;
       this.content = content;
       this.postedAt = new Date();
     }
