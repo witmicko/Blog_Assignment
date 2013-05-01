@@ -13,10 +13,10 @@ public class Home extends Controller
 {
   public static void index() {
     User user = Accounts.getLoggedInUser();
-    List<Blog> blogs = user.blogs;
+    //List<Blog> blogs = user.blogs;
     Logger.info("User theme: "+user.theme);
 
-    render(user, blogs);
+    render(user, user.blogs);
   }
   
   public static void setTheme(String theme){

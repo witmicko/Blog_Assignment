@@ -97,8 +97,11 @@ public class BlogView extends Controller
       Blog blog = new Blog(name);
       Logger.info("Name:" + name + blog.id);
       user.addBlog(blog);
+      Logger.info("Name2:" + name + blog.id);
       user.save();
+      Logger.info("Name3:" + name + blog.id);
     }
+    Logger.info("Name4:" + name );
     Home.index();
   }
 

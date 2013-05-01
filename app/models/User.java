@@ -10,18 +10,22 @@ import java.util.List;
 
 
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
+@Table(name = "my_user")
 public class User extends Model
 {
-  @OneToMany(cascade=CascadeType.ALL)
+  @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
   public List<Blog> blogs; //stores blogs
+  
   public String     firstName;
   public String     lastName;
   public int        age;
@@ -53,8 +57,9 @@ public class User extends Model
    * @param blog
    */
   public void addBlog(Blog blog){
-    //blog.user=this;
-    this.blogs.add(blog);
+    blog.author=this;
+    blog.save();
+    blogs.add(blog);
   }
   public List<Blog> getBlogs(Long blogId) {
     return blogs;

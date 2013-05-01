@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
 import com.sun.org.apache.xml.internal.security.c14n.implementations.Canonicalizer11_OmitComments;
 
+import play.data.validation.MaxSize;
 import play.db.jpa.Model;
 
 @Entity
@@ -27,6 +28,7 @@ public class Post extends Model
   public String        title;
 
   @Lob
+  @MaxSize(1000) 
   public String        content;
 
   public Date          postedAt;

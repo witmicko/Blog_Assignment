@@ -21,7 +21,7 @@ GET     /home/deleteblog/{id}				   Home.deleteBlog
 
 # BlogsView
 GET     /blogview/readblog/{id}                BlogView.readBlog
-GET     /blogview/newblog                      BlogView.newBlog
+
 POST    /blogview/newpost/{id}                 BlogView.newPost
 POST    /blogview/newcomment/{id}              BlogView.newComment
 GET     /blogslist                             BlogsView.index

@@ -1,3 +1,10 @@
+User(1testUser):
+    firstName: userFirstName
+    lastName: userLastName
+    age: 20
+    email: testUser@venter.ie
+    password: pwd
+    
 Comment(1comment1):
     author: commentAuthor
     content: contentTestLOL
@@ -24,19 +31,12 @@ Post(1post2):
 
 Blog(1blog1):
     name: blogOneTest
+    author: 1testUser
     posts:
           - 1post1
           - 1post2
           
 Blog(1blog2):
     name: secondBlog
+    author: 1testUser
           
-User(1testUser):
-    firstName: userFirstName
-    lastName: userLastName
-    age: 20
-    email: testUser@venter.ie
-    password: pwd
-    blogs:
-          - 1blog1
-          - 1blog2

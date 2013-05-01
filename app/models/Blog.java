@@ -14,17 +14,21 @@ import play.db.jpa.Model;
 public class Blog extends Model
 {
   public String name;
-//  @ManyToOne
-//  public User user;
+  
+  @ManyToOne
+  public User author;
   
   @OneToMany(cascade=CascadeType.ALL)
   public List<Post> posts;
+  
+ // public User author;
 
   
   public Blog(String name)
   {
     this.name = name;
     this.posts = new ArrayList<Post>();
+    
   }
   
   public void addPost(Post post){
