@@ -11,7 +11,6 @@ import play.db.jpa.Model;
 @Entity
 public class Comment extends Model
 {
-
   public Date   postedAt;
 
   @Lob
@@ -19,10 +18,9 @@ public class Comment extends Model
 
   @ManyToOne
   public User author;
-//  public Post   post;
 
   @ManyToOne
-  public Post post;
+  public Post   post;
 
   public Comment(String content)
     {

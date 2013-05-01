@@ -53,8 +53,8 @@ public class User extends Model
     this.email = email;
     this.password = password;
     this.blogs = new ArrayList<Blog>();
-    //this.posts = new ArrayList<Post>();
     this.comments = new ArrayList<Comment>();
+    //this.posts = new ArrayList<Post>();
     this.theme = "@{'/public/bootstrap/themes/google/google-bootstrap.css'}";
   }
   public void setTheme(String theme){
@@ -66,16 +66,14 @@ public class User extends Model
    */
   public void addBlog(Blog blog){
     blog.author=this;
-    blog.save();
     blogs.add(blog);
   }
   public List<Blog> getBlogs(Long blogId) {
     return blogs;
   }
   
-  public void addMyComment(Comment comment){
-    comment.author=this;
-    comment.save();
+  public void removeBlog(Blog blog){
+    blogs.remove(blog);
   }
 
   public static User findByEmail(String email) {
@@ -88,6 +86,15 @@ public class User extends Model
   }
   public int getBlogIndex(Blog blog){
     return blogs.indexOf(blog)+1;
+  }
+  
+  public void addComment(Comment comment){
+    comment.author = this;
+    comments.add(comment);
+  }
+  
+  public void removeComment(Comment comment){
+    comments.remove(comment);
   }
   public boolean checkPassword(String password) {
     return this.password.equals(password);

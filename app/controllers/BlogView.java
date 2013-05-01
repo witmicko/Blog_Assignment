@@ -33,17 +33,17 @@ public class BlogView extends Controller
     List<Blog> blogs = Blog.all().fetch();
     if (name.equalsIgnoreCase("all")) {
       Logger.info("all blogs");
-      
-    }else {
+
+    } else {
       List<Blog> searchResults = new ArrayList<Blog>();
       Logger.info("else loop Name: " + name);
       String str = name.toLowerCase();
-      Logger.info("str: "+str );
-      for(Blog b:blogs){
+      Logger.info("str: " + str);
+      for (Blog b : blogs) {
         String bName = b.name;
         bName = bName.toLowerCase();
-        if(bName.contains(str)){
-          Logger.info("blog name: "+b.name);
+        if (bName.contains(str)) {
+          Logger.info("blog name: " + b.name);
           searchResults.add(b);
         }
       }
@@ -81,18 +81,18 @@ public class BlogView extends Controller
 
     } else {
       Logger.info("log1");
-      //user = Accounts.getLoggedInUser();
+      // user = Accounts.getLoggedInUser();
       String postAuthor = author.firstName;// + " " + author.lastName;
-      Logger.info("log2 "+postAuthor);
+      Logger.info("log2 " + postAuthor);
       post = new Post("Example Post", "Example Content", postAuthor);
-      Logger.info("log3 "+post.title);
+      Logger.info("log3 " + post.title);
       post.save();
       blog.addPost(post);
       blog.save();
       user.save();
     }
     session.put("index", index);
-    render(blog, post, user,author);
+    render(blog, post, user, author);
   }
 
   // this works
@@ -101,6 +101,7 @@ public class BlogView extends Controller
       User user = Accounts.getLoggedInUser();
       Blog blog = new Blog(name);
       user.addBlog(blog);
+      blog.save();
       user.save();
     }
     Home.index();
@@ -126,7 +127,8 @@ public class BlogView extends Controller
     Blog blog = Blog.findById(blogId);
 
     Post post = Post.findById(postid);
-    blog.posts.remove(post);
+    blog.removePost(post);
+    //blog.posts.remove(post);
     blog.save();
     user.save();
     post.delete();
@@ -139,7 +141,10 @@ public class BlogView extends Controller
     Blog blog = Blog.findById(blogId);
     Post post = Post.findById(postid);
     Comment comment = Comment.findById(commentId);
-    post.comments.remove(comment);
+    User author = comment.author;
+    post.removeComment(comment);
+    author.removeComment(comment);
+    author.save();
     post.save();
     blog.save();
     user.save();
@@ -148,23 +153,21 @@ public class BlogView extends Controller
   }
 
   public static void newComment(String content, Long postId, Long blogId) {
+
     Post post = Post.findById(postId);
     Blog blog = Blog.findById(blogId);
     User user = blog.author;
     User author = Accounts.getLoggedInUser();
-    //String author = user.firstName;
+    
     Comment comment = new Comment(content);
     post.addComment(comment);
+    author.addComment(comment);
+    comment.save();
+    author.save();
+    post.save();
     blog.save();
     user.save();
-    author.addMyComment(comment);
-    author.save();
-    Logger.info("author:" + author + " content: " + content);
-//    post.comments.add(comment);
-//    post.save();
-//    blog.save();
-//    user.save();
-
+    
     readBlog(blogId, 0);
   }
 

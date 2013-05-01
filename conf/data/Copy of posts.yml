@@ -3,18 +3,26 @@ Post(1post1):
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 1blog1
+    comments:
+              - 1comment1
+              - 1comment2
 
 Post(1post2):
     title: ContinuedBluthIpsum
     content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
     postedAt: 2015-05-19
     blog: 1blog1
+    comments: 
 
 Post(2post1):
     title: Bluth Ipsum
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 1blog2
+    comments:
+              - 2comment1
+              - 2comment2
+              - 2comment3
 
 Post(2post2):
     title: ContinuedBluthIpsum
@@ -27,60 +35,80 @@ Post(3post1):
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 1blog2
+    comments:
+              - 3comment1
+              - 3comment2
 
 Post(3post2):
     title: Come on! I don't appreciate the dry British humor.
     content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
     postedAt: 2015-05-19
     blog: 2blog1
+    comments: 
     
 Post(4post1):
     title: BluthIpsum
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 2blog1
+    comments:
+              - 4comment1
+              - 4comment2
 
 Post(4post2):
     title: ContinuedBluthIpsum
     content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
     postedAt: 2015-05-19
     blog: 2blog2
+    comments: 
     
 Post(5post1):
     title: BluthIpsum
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 2blog2
+    comments:
+              - 5comment1
+              - 5comment2
 
 Post(5post2):
     title: ContinuedBluthIpsum
     content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
     postedAt: 2015-05-19
     blog: 3blog1
+    comments: 
     
 Post(6post1):
     title: BluthIpsum
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 3blog1
+    comments:
+              - 6comment1
+              - 6comment2
 
 Post(6post2):
     title: ContinuedBluthIpsum
     content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
     postedAt: 2015-05-19
     blog: 3blog2
+    comments: 
 
 Post(7post1):
     title: BluthIpsum
     content: There's a girl in my soup! You just grab that brownish area by its points and you don't let go no matter what your mother tells you! She's trying to prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. I need a tea to give my dingle less tingle. The worst that could happen is that I could spill coffee all over this $3,000 suit. COME ON.
     postedAt: 2013-02-05
     blog: 3blog2
+    comments:
+              - 7comment1
+              - 7comment2
 
 Post(7post2):
     title: ContinuedBluthIpsum
     content: If mother sees this, she will blow a cow. Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? Yes, Annyong. Your name is Annyong! We all know you're Annyong! That's so you can videotape it when they put you in a naked pyramid and point to your Charlie Browns. Come on, this is a Bluth family celebration. It's no place for children.
     postedAt: 2015-05-19
     blog: 4blog1
+    comments:
 
 
 

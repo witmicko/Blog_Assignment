@@ -19,18 +19,16 @@ import play.db.jpa.Model;
 @Entity
 public class Post extends Model
 {
-   @ManyToOne
-   public Blog blog;
-   
+  @ManyToOne
+  public Blog          blog;
 
-  @OneToMany(mappedBy="post", cascade = CascadeType.ALL)
+  @OneToMany(cascade = CascadeType.ALL)
   public List<Comment> comments;
-  
 
   public String        title;
 
   @Lob
-  @MaxSize(1000) 
+  @MaxSize(1000)
   public String        content;
 
   public Date          postedAt;
@@ -49,6 +47,9 @@ public class Post extends Model
   public void addComment(Comment comment) {
     comment.post = this;
     comments.add(comment);
+  }
+  public void removeComment(Comment comment){
+    comments.remove(comment);
   }
 
   @Override

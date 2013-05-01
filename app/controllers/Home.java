@@ -21,7 +21,6 @@ public class Home extends Controller
   
   public static void setTheme(String theme){
     User user = Accounts.getLoggedInUser();
-    Logger.info("1theme: "+theme);
     user.theme = theme;
     Logger.info("User theme: "+user.theme);
     user.save();
@@ -31,14 +30,10 @@ public class Home extends Controller
   
   public static void deleteBlog(Long id){
     User user = Accounts.getLoggedInUser();
-    List<Blog> blogs = user.blogs;
     Blog blog = Blog.findById(id);
-    blogs.remove(blog);
-    List<Post>posts = blog.posts;
-    blog.posts.removeAll(posts);
+    user.removeBlog(blog);
     user.save();
     blog.delete();
     index();
   }
-  //public 
 }
