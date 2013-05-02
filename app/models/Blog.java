@@ -27,23 +27,19 @@ public class Blog extends Model
   @OneToMany(mappedBy="blog", cascade=CascadeType.ALL)
   public List<Post> posts;
   
- // public User author;
-
-  
   public Blog(String name)
   {
     this.name = name;
     this.posts = new ArrayList<Post>();
     this.readers = new ArrayList<User>();
-    
   }
   
   public void addPost(Post post){
     post.blog = this;
     post.save();
     posts.add(post);
-    
   }
+  
   public void removePost(Post post){
     this.posts.remove(post);
   }
@@ -53,6 +49,7 @@ public class Blog extends Model
     readers.add(user);
     Logger.info("ADDED READER "+ user.firstName);
   }
+  
   public void removeSub(User user){
     readers.remove(user);
   }
@@ -64,7 +61,6 @@ public class Blog extends Model
       return false;
     }
   }
-  
   
   public String toString()
   {

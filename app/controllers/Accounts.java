@@ -11,10 +11,6 @@ public class Accounts extends Controller
     render();
   }
 
-//  public static void login() {
-//    render();
-//  }
-
   public static void logout() {
     session.clear();
     index();

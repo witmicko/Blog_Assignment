@@ -29,12 +29,10 @@ public class BlogView extends Controller
   }
 
   public static void findBlog(String name) {
+    session.put("name", name);
     User user = Accounts.getLoggedInUser();
     List<Blog> blogs = Blog.all().fetch();
-    if (name.equalsIgnoreCase("all")) {
-      Logger.info("get all blogs");
-
-    } else {
+    if (!name.equalsIgnoreCase("all")) {
       List<Blog> searchResults = new ArrayList<Blog>();
       Logger.info("else loop Name: " + name);
       String str = name.toLowerCase();
@@ -180,7 +178,8 @@ public class BlogView extends Controller
     User author = blog.author;
     blog.addSubscriber(user);
     blog.save();
-    findBlog("all");
+    String str = session.get("name");
+    findBlog(str);
   }
 
 }
