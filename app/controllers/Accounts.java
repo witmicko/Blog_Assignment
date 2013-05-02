@@ -1,5 +1,9 @@
 package controllers;
 
+import java.util.Collections;
+import java.util.List;
+
+import models.Post;
 import models.User;
 import play.Logger;
 import play.db.jpa.GenericModel;
@@ -17,7 +21,10 @@ public class Accounts extends Controller
   }
 
   public static void index() {
-    render();
+    List <Post>posts=Post.findAll();
+    Collections.reverse(posts);
+    Post post = posts.get(0);
+    render(post);
   }
 
   public static void register(String firstName, String lastName, int age,

@@ -34,9 +34,7 @@ public class BlogView extends Controller
     List<Blog> blogs = Blog.all().fetch();
     if (!name.equalsIgnoreCase("all")) {
       List<Blog> searchResults = new ArrayList<Blog>();
-      Logger.info("else loop Name: " + name);
       String str = name.toLowerCase();
-      Logger.info("str: " + str);
       for (Blog b : blogs) {
         String bName = b.name;
         bName = bName.toLowerCase();
@@ -63,7 +61,7 @@ public class BlogView extends Controller
 
     Blog blog = Blog.findById(id);
     User author = blog.author;
-    List<Post> posts = blog.posts; // get user`s posts only
+    List<Post> posts = blog.posts;
     Collections.reverse(posts);
     Post post = null;
     if (posts.size() != 0) {
@@ -78,12 +76,8 @@ public class BlogView extends Controller
       }
 
     } else {
-      Logger.info("log1");
-      // user = Accounts.getLoggedInUser();
-      String postAuthor = author.firstName;// + " " + author.lastName;
-      Logger.info("log2 " + postAuthor);
+      String postAuthor = author.firstName + " " + author.lastName;
       post = new Post("Example Post", "Example Content", postAuthor);
-      Logger.info("log3 " + post.title);
       post.save();
       blog.addPost(post);
       blog.save();
@@ -110,12 +104,9 @@ public class BlogView extends Controller
     User user = Accounts.getLoggedInUser();
     String author = user.firstName;
     Post post = new Post(title2, content, author);
-
     Blog blog = Blog.findById(id);
     blog.addPost(post);
     user.save();
-    Logger.info("title:" + title2 + " content:" + content + "post id: "
-        + post.id + " " + "user id: " + user.id);
 
     readBlog(id, 0);
   }
@@ -127,7 +118,6 @@ public class BlogView extends Controller
 
     Post post = Post.findById(postid);
     blog.removePost(post);
-    // blog.posts.remove(post);
     blog.save();
     user.save();
     post.delete();
@@ -173,7 +163,6 @@ public class BlogView extends Controller
   public static void subscribe(Long id) {
     User user = Accounts.getLoggedInUser();
     Blog blog = Blog.findById(id);
-    Logger.info("ADDING TO BLOG " + blog.id);
     user.save();
     User author = blog.author;
     blog.addSubscriber(user);

@@ -13,7 +13,6 @@ public class Home extends Controller
 {
   public static void index() {
     User user = Accounts.getLoggedInUser();
-    //List<Blog> blogs = user.blogs;
     Logger.info("User theme: "+user.theme);
     List<Blog>blogs = Blog.findAll();
 

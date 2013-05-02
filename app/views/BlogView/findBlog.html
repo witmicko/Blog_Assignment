@@ -4,8 +4,8 @@
 
 #{include 'nav/open.html' /}
 <li>                <a href="/home" > Home  </a></li>
-<li>  <a href=@{UsersBrowser.index("all")}> Users </a> </li>
-<li class="active"> <a href=""      > Blogs </a></li>
+<li>                <a href=@{UsersBrowser.index("all")}> Users </a> </li>
+<li class="active"> <a href="#" > Blogs </a></li>
 <li> 
   <div class="btn-group">
     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
@@ -24,9 +24,6 @@
 <li > <a class="pull-right" href="/logout"> Logout  </a></li>
 
 #{include 'nav/close.html' /}
-
-
-
 <div class="container span9">
         <form class="well form-horizontal" action="/register" method="POST">
           <table class="table">

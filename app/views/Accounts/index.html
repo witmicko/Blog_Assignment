@@ -3,13 +3,27 @@
 
 <div class="hero-unit">
   <h1 class="pull-left">Venter</h1>
-  <a class="btn pull-right btn-primary btn-small" href="/signup"> Signup</a>
   <div class="row">
     <p>Vent a bit, it`s free</p>
   </div>
+  <a class="btn  btn-success offset9" href="/signup"> Signup</a>
 </div>
-<form class="form-vertical pull-right span3" action="/authenticate" method="POST">
-  <div class="well">
+<div class="row-fluid">
+  <div class="container span7">
+    <ul class="nav nav-tabs">
+      <li><a href="#posts" data-toggle="tab">Latest post</a></li>
+      <li><a href="#about" data-toggle="tab">About</a> </li>
+    </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="posts">  
+      #{include '/tags/latests.html'/}
+    </div>
+    <div class="tab-pane" id="about">
+      #{include 'tags/about.html'/} 
+    </div>
+  </div>
+  </div>
+  <form class="form-vertical  span3 well" action="/authenticate" method="POST">
     <div class="control-group">
       <span class="label label-info">Login</span>
       <div class="controls">
@@ -18,19 +32,5 @@
         <button class="btn btn-primary" type="submit" value="Login">Login</button>
       </div>
     </div>
-  </div>
-</form>
-<div class="container span9">
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a href="#">Latest post</a> 
-    </li>
-    <li>
-      <a href="#">About</a> 
-    </li>
-  </ul>
-<div class="well well-large">
-  <p>Latest Post / About</p>
-  </div>
+  </form>
 </div>
-
