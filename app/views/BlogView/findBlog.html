@@ -49,6 +49,9 @@
                 #{if user == blog.author}
                   <a href="@{Home.deleteBlog(blog.id)}" class="btn btn-mini pull-right">Delete</a> 
                 #{/if}
+                #{if !blog.contains(user) && user != blog.author }
+                <a href="@{BlogView.subscribe(blog.id)}" class="btn btn-mini pull-right">Subscribe to blog</a>
+                #{/if}
                   <h6>No. of posts[${blog.posts.size()}] </h6>
                 </td>
               </tr>

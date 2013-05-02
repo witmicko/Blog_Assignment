@@ -26,6 +26,9 @@ public class User extends Model
   @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
   public List<Blog> blogs; //stores blogs
   
+//  @OneToMany(mappedBy="reader", cascade=CascadeType.ALL)
+//  public List<Blog> readingList; //stores blogs
+  
   @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
   public List<Comment>comments;
   
@@ -53,8 +56,8 @@ public class User extends Model
     this.email = email;
     this.password = password;
     this.blogs = new ArrayList<Blog>();
+   // this.readingList = new ArrayList<Blog>();
     this.comments = new ArrayList<Comment>();
-    //this.posts = new ArrayList<Post>();
     this.theme = "/public/bootstrap/themes/cyborg/bootstrap.css";
   }
   public void setTheme(String theme){
@@ -75,6 +78,15 @@ public class User extends Model
   public void removeBlog(Blog blog){
     blogs.remove(blog);
   }
+  
+//  public void addToReadingList(Blog blog, User user){
+//    blog.addReader(user);
+//    this.readingList.add(blog);
+//  }
+//  
+//  public void removeFromReadingList(Blog blog){
+//    this.readingList.remove(blog);
+//  }
 
   public static User findByEmail(String email) {
     return find("email", email).first();

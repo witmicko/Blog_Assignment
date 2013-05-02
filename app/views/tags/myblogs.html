@@ -1,0 +1,22 @@
+<table class="well table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Your Blogs (${user.blogs.size()})</th>
+    </tr>
+  </thead>
+  <tbody>
+  #{list items:user.blogs, as:'blog'}
+    <tr>
+      <td>${user.getBlogIndex(blog)}</td>
+      <td>
+        <a href="@{BlogView.readBlog(blog.id,0)}">
+          <strong>${blog.getName()}</strong> 
+        </a>
+        <a href="@{Home.deleteBlog(blog.id)}" class="btn btn-mini pull-right">Delete</a> 
+        <h6>No. of posts[${blog.posts.size()}] </h6>
+      </td>
+    </tr>
+  #{/list}
+  </tbody>
+</table>

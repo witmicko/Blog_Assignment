@@ -1,0 +1,25 @@
+<table class="table well">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Your Subscriptions</th>
+    </tr>
+  </thead>
+  <tbody>
+  #{list items:blogs, as:'blog'}
+  #{if blog.contains(user)}
+    <tr>
+      <td>${blog.author}</td>
+      <td>
+        <a href="@{BlogView.readBlog(blog.id,0)}">
+          <strong>${blog.getName()}</strong> 
+        </a>
+        
+        <a href="@{Home.unSubscribe(blog.id)}" class="btn btn-mini pull-right">unsubscribe</a> 
+        <h6>No. of posts[${blog.posts.size()}] </h6>
+      </td>
+    </tr>
+    #{/if}
+  #{/list}
+  </tbody>
+</table>

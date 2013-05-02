@@ -5,7 +5,7 @@
 #{include 'nav/open.html' /}
 <li class="active"> <a href="/home"> Home </a></li>
 <li> <a href=@{UsersBrowser.index("all")}> Users </a> </li>
-<li > <a href=""      > Blogs </a></li>
+<li > <a href="@{BlogView.findBlog("all")}"      > Browse Blogs </a></li>
 <li id="newblog">   
   <a href="#" 
     rel="popover"    
@@ -52,32 +52,14 @@
   <div class="span4">
     <div class="well text-well">     
       <h4> Hello: ${user.firstName} ${user.lastName} <br>age:${user.age}</h4>
-    </div>  
-      <div class="container span9">
-        <form class="well form-horizontal" action="/register" method="POST">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Your Blogs (${user.blogs.size()})</th>
-              </tr>
-            </thead>
-            <tbody>
-            #{list items:user.blogs, as:'blog'}
-              <tr>
-                <td>${user.getBlogIndex(blog)}</td>
-                <td>
-                  <a href="@{BlogView.readBlog(blog.id,0)}">
-                    <strong>${blog.getName()}</strong> 
-                  </a>
-                  <a href="@{Home.deleteBlog(blog.id)}" class="btn btn-mini pull-right">Delete</a> 
-                  <h6>No. of posts[${blog.posts.size()}] </h6>
-                </td>
-              </tr>
-            #{/list}
-            </tbody>
-          </table>
-        </form>
-      </div>
+    </div>
+  </div> 
+</div> 
+<div class="row-fluid span12">
+  <div class="span5">
+    #{include 'tags/myblogs.html' /}
+  </div>    
+  <div class=" span5">
+    #{include 'tags/readinglist.html' /}
   </div>
 </div>

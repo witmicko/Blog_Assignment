@@ -32,7 +32,7 @@ public class BlogView extends Controller
     User user = Accounts.getLoggedInUser();
     List<Blog> blogs = Blog.all().fetch();
     if (name.equalsIgnoreCase("all")) {
-      Logger.info("all blogs");
+      Logger.info("get all blogs");
 
     } else {
       List<Blog> searchResults = new ArrayList<Blog>();
@@ -92,6 +92,7 @@ public class BlogView extends Controller
       user.save();
     }
     session.put("index", index);
+    Logger.info("BLOG ID " + blog.id);
     render(blog, post, user, author);
   }
 
@@ -115,8 +116,8 @@ public class BlogView extends Controller
     Blog blog = Blog.findById(id);
     blog.addPost(post);
     user.save();
-    Logger.info("title:" + title2 + " content:" + content +"post id: "+ post.id + " "
-        +"user id: "+ user.id);
+    Logger.info("title:" + title2 + " content:" + content + "post id: "
+        + post.id + " " + "user id: " + user.id);
 
     readBlog(id, 0);
   }
@@ -128,7 +129,7 @@ public class BlogView extends Controller
 
     Post post = Post.findById(postid);
     blog.removePost(post);
-    //blog.posts.remove(post);
+    // blog.posts.remove(post);
     blog.save();
     user.save();
     post.delete();
@@ -158,7 +159,7 @@ public class BlogView extends Controller
     Blog blog = Blog.findById(blogId);
     User user = blog.author;
     User author = Accounts.getLoggedInUser();
-    
+
     Comment comment = new Comment(content);
     post.addComment(comment);
     author.addComment(comment);
@@ -167,8 +168,19 @@ public class BlogView extends Controller
     post.save();
     blog.save();
     user.save();
-    
+
     readBlog(blogId, 0);
+  }
+
+  public static void subscribe(Long id) {
+    User user = Accounts.getLoggedInUser();
+    Blog blog = Blog.findById(id);
+    Logger.info("ADDING TO BLOG " + blog.id);
+    user.save();
+    User author = blog.author;
+    blog.addSubscriber(user);
+    blog.save();
+    findBlog("all");
   }
 
 }
