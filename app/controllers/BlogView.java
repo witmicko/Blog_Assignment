@@ -164,7 +164,6 @@ public class BlogView extends Controller
     User user = Accounts.getLoggedInUser();
     Blog blog = Blog.findById(id);
     user.save();
-    User author = blog.author;
     blog.addSubscriber(user);
     blog.save();
     String str = session.get("name");
