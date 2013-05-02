@@ -8,14 +8,14 @@ import play.test.Fixtures;
 public class Bootstrap extends Job
 
 {
-//  @Override
-//  public void doJob() {
-//   if(User.count()==0){
-//      Fixtures.loadModels("/data/users.yml");
-//      Fixtures.loadModels("/data/blogs.yml");
-//      Fixtures.loadModels("/data/posts.yml");
-//      Fixtures.loadModels("/data/comments.yml");
-// 
-//   }
-//  }
+  @Override
+  public void doJob() {
+   if(User.count()==0){
+      Fixtures.loadModels("/data/users.yml");
+      Fixtures.loadModels("/data/blogs.yml");
+      Fixtures.loadModels("/data/posts.yml");
+      Fixtures.loadModels("/data/comments.yml");
+ 
+   }
+  }
 }

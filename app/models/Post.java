@@ -22,7 +22,7 @@ public class Post extends Model
   @ManyToOne
   public Blog          blog;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(mappedBy="post" ,cascade = CascadeType.ALL)
   public List<Comment> comments;
 
   public String        title;

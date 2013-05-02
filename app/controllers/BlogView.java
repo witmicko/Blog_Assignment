@@ -111,12 +111,12 @@ public class BlogView extends Controller
     User user = Accounts.getLoggedInUser();
     String author = user.firstName;
     Post post = new Post(title2, content, author);
-    Logger.info("title:" + title2 + " content:" + content + post.id + " "
-        + user.id);
 
     Blog blog = Blog.findById(id);
     blog.addPost(post);
     user.save();
+    Logger.info("title:" + title2 + " content:" + content +"post id: "+ post.id + " "
+        +"user id: "+ user.id);
 
     readBlog(id, 0);
   }
