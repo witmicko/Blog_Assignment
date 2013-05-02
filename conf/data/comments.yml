@@ -1,20 +1,20 @@
 Comment(1comment1):
+    post: 1post1
     author: 1testUser
     content: contentTestLOL
     postedAt: 2013-02-05
-    post: 1post1
     
 Comment(1comment2):
+    post: 1post1
     author: GeorgeBluth
     content: contentTest222
     postedAt: 2013-02-05
-    post: 1post1
     
 Comment(2comment1):
+    post: 1post2
     author: 1testUser
     content: You might wanna lean away from that fire since you're soaked in alcohol.
     postedAt: 2013-02-05
-    post: 1post2
     
 Comment(2comment2):
     author: LucilleBluth

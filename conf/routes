@@ -16,19 +16,19 @@ POST   /register                               Accounts.register
 
 # Home page
 GET     /home                                  Home.index                                  
-GET     /home/deleteblog/{id}				   Home.deleteBlog
+#GET     /home/deleteblog/{id}				   Home.deleteBlog
 
 
 # BlogsView
-GET     /blogview/readblog/{id}                BlogView.readBlog
+#GET     /blogview/readblog/{id}                BlogView.readBlog
 
 POST    /blogview/newpost/{id}                 BlogView.newPost
 POST    /blogview/newcomment/{id}              BlogView.newComment
 GET     /blogslist                             BlogsView.index
-GET     /blogslist/follow/{id}                 BlogsView.follow
+#GET     /blogslist/follow/{id}                 BlogsView.follow
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+#GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

@@ -1,6 +1,6 @@
 User(1testUser):
-    firstName: userFirstName
-    lastName: userLastName
+    firstName: FirstName
+    lastName: LastName
     age: 20
     email: testUser@venter.ie
     password: pwd

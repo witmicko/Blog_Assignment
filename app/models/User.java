@@ -39,7 +39,7 @@ public class User extends Model
   public String     password;
   public Blob       profilePicture;
   public Blob       thumbnailPicture;
-  public String      theme;
+  public String     theme;
 
   /**
    * Constructor for object of class User
@@ -55,7 +55,7 @@ public class User extends Model
     this.blogs = new ArrayList<Blog>();
     this.comments = new ArrayList<Comment>();
     //this.posts = new ArrayList<Post>();
-    this.theme = "@{'/public/bootstrap/themes/google/google-bootstrap.css'}";
+    this.theme = "/public/bootstrap/themes/cyborg/bootstrap.css";
   }
   public void setTheme(String theme){
     this.theme = theme;}
