@@ -4,3 +4,15 @@ require:
     - play
     - play -> crud 
     - play -> cloudbees 0.2.2
+#   - org.hibernate -> hibernate-core 3.6.9.Final:
+#        force: true
+    - org.hibernate -> hibernate-validator 4.2.0.Final
+
+repositories:
+    - jboss:
+        type: iBiblio
+        root: "https://repository.jboss.org/nexus/content/groups/public"
+        contains:
+            - org.jboss -> *
+            - org.jboss.javaee -> *
+            - org.hibernate -> *
