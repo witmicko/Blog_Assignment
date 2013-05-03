@@ -31,7 +31,7 @@ public class UsersBrowser extends Controller
       }
       users = searchResults;
     }
-    render(user, users);
+    render(user, users, name);
   }
 
   public static void findUser(String name) {

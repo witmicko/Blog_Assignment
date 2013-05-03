@@ -45,7 +45,7 @@ public class BlogView extends Controller
       }
       blogs = searchResults;
     }
-    render(user, blogs);
+    render(user, blogs,name);
   }
 
   // this works
