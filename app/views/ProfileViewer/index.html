@@ -1,0 +1,55 @@
+#{set theme: "${user.theme}"/}
+#{extends 'main.html' /}
+#{set title:"Profile of ${profile.firstName}" /}
+
+#{include 'nav/open.html' /}
+<li>                <a href="/home" > Home  </a></li>
+<li class="active"> <a href=@{UsersBrowser.index("all")}> Users </a> </li>
+<li > <a href="@{BlogView.findBlog("all")}"      > Browse Blogs </a></li>
+
+#{include 'nav/close.html' /}
+
+<div class="row-fluid">
+  <div class="span4">
+    <div class="well text-well">     
+      <h4> Profile of: ${profile.firstName} ${profile.lastName} <br>age:${profile.age}</h4>
+    </div>
+    </div>
+    <div class="span4">    
+      <img class="img-rounded well" src="@{ProfileViewer.getPicture(profile.id)}"/> 
+    </div>
+  </div>
+</div> 
+<div class="row-fluid span12">
+  <div class="span5">
+    <table class="well table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Your Blogs (${user.blogs.size()})</th>
+      </tr>
+    </thead>
+    <tbody>
+    #{list items:profile.blogs, as:'blog'}
+      <tr>
+        <td>${profile.getBlogIndex(blog)}</td>
+        <td>
+          <a href="@{BlogView.readBlog(blog.id,0)}">
+            <strong>${blog.getName()}</strong> 
+          </a>
+          #{if !blog.contains(user)}
+            <a href="@{BlogView.subscribeFromProfile(blog.id, profile.id)}" class="btn btn-mini pull-right">Subscribe to blog</a>
+          #{/if}
+          <h6>No. of posts[${blog.posts.size()}] </h6>
+        </td>
+      </tr>
+    #{/list}
+    </tbody>
+  </table>
+  </div>    
+</div>
+
+
+
+
+

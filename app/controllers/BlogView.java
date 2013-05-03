@@ -167,7 +167,18 @@ public class BlogView extends Controller
     blog.addSubscriber(user);
     blog.save();
     String str = session.get("name");
+    
     findBlog(str);
+  }
+  
+  public static void subscribeFromProfile(Long blogId,Long profileId ) {
+    User user = Accounts.getLoggedInUser();
+    Blog blog = Blog.findById(blogId);
+    user.save();
+    blog.addSubscriber(user);
+    blog.save();
+    String str = session.get("name");
+    ProfileViewer.index(profileId);
   }
 
 }

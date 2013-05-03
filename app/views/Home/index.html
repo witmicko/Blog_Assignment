@@ -54,6 +54,21 @@
       <h4> Hello: ${user.firstName} ${user.lastName} <br>age:${user.age}</h4>
     </div>
   </div> 
+  <div class="hero-unit span4">               
+      <img class="img-rounded" src="@{ProfileViewer.getPicture(user.id)}"/>         
+      <form class="file-form"action="@{ProfileViewer.uploadPicture()}" method="post" enctype="multipart/form-data">    
+        <input type="file" title="Picture" name="picture" />
+        <input class="btn btn-small btn-primary " type="submit" name="submit" value="Save"  />
+      </form> 
+    </div>
+    
+    <div class="hero-unit span3 ">
+      <img class="img-rounded  " src="@{ProfileViewer.getThumbnail(user.id)}"/>
+      <form class="file-form" action="@{ProfileViewer.uploadThumbnail()}" method="post" enctype="multipart/form-data">     
+        <input type="file" title="Thumbnail" name="picture" />
+        <input class="btn btn-small btn-primary" type="submit" name="submit" value="Save"  />   
+      </form>        
+    </div>  
 </div> 
 <div class="row-fluid span12">
   <div class="span5">
