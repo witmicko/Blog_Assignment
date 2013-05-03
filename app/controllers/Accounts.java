@@ -21,15 +21,22 @@ public class Accounts extends Controller
   }
 
   public static void index() {
-    List <Post>posts=Post.findAll();
+    List<Post> posts = Post.findAll();
     Collections.reverse(posts);
-    Post post = posts.get(0);
+    Post post = null;
+    if (posts.size() > 0) {
+      post = posts.get(0);
+    } else {
+      post = new Post("Example Post",
+          "There is no posts, This was created as a placeholder", "System");
+    }
     render(post);
   }
 
   public static void register(String firstName, String lastName, int age,
       String email, String password, String password2) {
-    Logger.info(firstName + " " + lastName +" " +age+ " " + email + " " + password);
+    Logger.info(firstName + " " + lastName + " " + age + " " + email + " "
+        + password);
     User user = new User(firstName, lastName, age, email, password);
     user.save();
     authenticate(user.email, user.password);
