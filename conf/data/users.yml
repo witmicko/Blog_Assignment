@@ -4,6 +4,7 @@ User(1testUser):
     age: 20
     email: testUser@venter.ie
     password: pwd
+    theme: /public/bootstrap/themes/cyborg/bootstrap.css
     
 User(GeorgeBluth):
     firstName: George
