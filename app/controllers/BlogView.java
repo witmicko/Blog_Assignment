@@ -180,5 +180,22 @@ public class BlogView extends Controller
     String str = session.get("name");
     ProfileViewer.index(profileId);
   }
+  
+  public static void like(Long postId, Long blogId){
+    Post post = Post.findById(postId);
+    User user = Accounts.getLoggedInUser();
+    post.addLike(user);
+    post.save();
+    readBlog(blogId, 0);
+  }
+  
+  public static void unLike(Long postId, Long blogId){
+    Post post = Post.findById(postId);
+    User user = Accounts.getLoggedInUser();
+    post.removeLike(user);
+    post.save();
+    readBlog(blogId, 0);
+  }
+  
 
 }

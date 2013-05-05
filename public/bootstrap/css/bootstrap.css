@@ -2939,7 +2939,7 @@ table th[class*="span"],
   height: 1px;
   margin: 9px 1px;
   *margin: -5px 0 5px;
-  overflow: hidden;
+  overflow: visible;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
 }
@@ -3147,7 +3147,7 @@ table th[class*="span"],
 .collapse {
   position: relative;
   height: 0;
-  overflow: hidden;
+  overflow: visible;
   -webkit-transition: height 0.35s ease;
      -moz-transition: height 0.35s ease;
        -o-transition: height 0.35s ease;

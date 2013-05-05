@@ -62,35 +62,56 @@
   
 <!--   carousel -->
   <div id="myCarousel" class="carousel slide">
-  
   <!-- Carousel items -->
   <div class="carousel-inner">
     <div class="active item">
     #{if user == blog.author}
-      <a href="@{BlogView.deletepost(post.id, blog.id)}" class="btn btn-mini pull-right">Delete</a>
+      <a href="@{BlogView.deletepost(post.id, blog.id)}" class="btn btn-danger pull-right">Delete</a>
     #{/if}
+    
+    #{if !post.checkLiked(user) && user!=blog.author}
+    <a href="@{BlogView.like(post.id, blog.id)}" class="btn btn-success btn-small pull-right">Like</a>
+    #{/if}
+    
+    #{if post.checkLiked(user)&&user!=blog.author}
+    <a href="@{BlogView.unlike(post.id, blog.id)}" class="btn btn-warning btn-small pull-right">Unlike</a>
+    #{/if}
+    
       <strong>${post.title}</strong></a>
       <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
       <p>${post.content}   </p>
       <p class="pull-right">${post.author}</p>
+<!--       LIKED BY AND LINKS TO PROFILES -->
+      <div class="btn-group pull-right">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Liked by: ${post.likes.size()}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          #{list items:post.likes, as:'like'}
+          <li> <a href="@{ProfileViewer.index(like.id)}">${like.firstName}</a></li>
+          #{/list}
+        </ul>
+</div>
       
 <!--       accordion comments -->
       #{list items:post.comments, as:'comment'}
-      <div class="container-fluid">
-      <div class="accordion" id="accordion2">
-        <div class="accordion-group">
-          <div class="accordion-heading">
-          #{if user == comment.author}
-            <a href="@{BlogView.deletecomment(blog.id,post.id, comment.id)}" class="btn btn-mini pull-right">Delete Comment</a>
-          #{/if}  
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion${comment.id}" href="#${comment.id}">
-            <strong>${comment.author}</strong></a>
-            <p>Posted: ${comment.postedAt.format('dd MMM yy')} at: ${comment.postedAt.format('hh:mm')}</p>
-          </div>
-          <div id="${comment.id}" class="accordion-body collapse in">
-            <div class="accordion-inner"> 
-              <p>${comment.content}   </p>
-              <p class="pull-right">${comment.author}   </p>
+      <div class="row-fluid">
+      <div class="container-fluid span10">
+        <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+            #{if user == comment.author}
+              <a href="@{BlogView.deletecomment(blog.id,post.id, comment.id)}" class="btn btn-mini pull-right">Delete Comment</a>
+            #{/if}  
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion${comment.id}" href="#${comment.id}">
+              <strong>${comment.author}</strong></a>
+              <p>Posted: ${comment.postedAt.format('dd MMM yy')} at: ${comment.postedAt.format('hh:mm')}</p>
+            </div>
+            <div id="${comment.id}" class="accordion-body collapse in">
+              <div class="accordion-inner"> 
+                <p>${comment.content}   </p>
+                <p class="pull-right">${comment.author}   </p>
+              </div>
             </div>
           </div>
         </div>
@@ -98,21 +119,19 @@
       </div>
       #{/list}
       
-      <form class="form-vertical well" action="@{BlogView.newcomment(content, post.id, blog.id)}" method="POST">
+      <form class="form-vertical well span10" action="@{BlogView.newcomment(content, post.id, blog.id)}" method="POST">
       <fieldset>
-            <legend>New Comment</legend>
         <div class="control-group">
           <div class="controls">
           <textarea class="row-fluid" rows="3"name="content" id="content" >comment...</textarea>
           </div>
         </div>
-        <div class="well form-actions well-small">
+        <div class="form-actions">
           <button class="btn btn-primary" type="submit" value="Save">Save</button>
         </div>
       </fieldset>
-    </form>
-      
- </div>
+      </form>
+    </div>
   </div>
   <!-- Carousel nav -->
 </div>

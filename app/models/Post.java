@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -25,6 +26,9 @@ public class Post extends Model
   @OneToMany(mappedBy="post" ,cascade = CascadeType.ALL)
   public List<Comment> comments;
 
+  @ManyToMany
+  public List<User>likes;
+  
   public String        title;
 
   @Lob
@@ -42,6 +46,7 @@ public class Post extends Model
       this.content = content;
       this.postedAt = new Date();
       this.comments = new ArrayList<Comment>();
+      this.likes=new ArrayList<User>();
     }
 
   public void addComment(Comment comment) {
@@ -50,6 +55,23 @@ public class Post extends Model
   }
   public void removeComment(Comment comment){
     comments.remove(comment);
+  }
+  
+  public void addLike(User user){
+    likes.add(user);
+  }
+  
+  public void removeLike(User user){
+    likes.remove(user);
+  }
+  
+  public boolean checkLiked(User user){
+    if ( likes.contains(user)){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   @Override
