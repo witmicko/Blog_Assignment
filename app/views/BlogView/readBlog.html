@@ -57,8 +57,10 @@
 
 <div class="container-fluid">
   <div class="row-fluid">
-    <h2> <strong>${blog.getName()}</strong> </h2>
+    <div class="well pagination-centered">
+    <h2> <strong>Blog: ${blog.getName()} by ${blog.author}</strong> </h2>
   </div>
+</div>
   
 <!--   carousel -->
   <div id="myCarousel" class="carousel slide">
@@ -80,7 +82,6 @@
       <strong>${post.title}</strong></a>
       <p>Posted: ${post.postedAt.format('dd MMM yy')} at: ${post.postedAt.format('hh:mm')}</p>
       <p>${post.content}   </p>
-      <p class="pull-right">${post.author}</p>
 <!--       LIKED BY AND LINKS TO PROFILES -->
       <div class="btn-group pull-right">
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Liked by: ${post.likes.size()}

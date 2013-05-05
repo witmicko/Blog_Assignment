@@ -37,7 +37,7 @@
           <a href="@{BlogView.readBlog(blog.id,0)}">
             <strong>${blog.getName()}</strong> 
           </a>
-          #{if !blog.contains(user)}
+          #{if !blog.contains(user) && user != blog.author}
             <a href="@{BlogView.subscribeFromProfile(blog.id, profile.id)}" class="btn btn-mini pull-right">Subscribe to blog</a>
           #{/if}
           <h6>No. of posts[${blog.posts.size()}] </h6>
